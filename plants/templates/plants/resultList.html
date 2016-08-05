@@ -1,0 +1,32 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}PlantyPictures Search Result{% endblock %}
+{% block content %}
+
+<!-- <div class='col-sm-6 col-sm-offset-3'>
+	<div class='thumbnail'>
+		<div class='plantEntry'>
+			{% for plant in plantResult %}
+				<h3><a href="/plants/plantResults?q={{plant.plant_id}} ">ID: {{plant.plant_id}}; Common name: {{plant.common_name }} / Scientific name: {{ plant.scientific_name }}
+					<samll> ca_native? {{plant.ca_native}} </small></h3>
+			{% endfor %}
+		</div> -->
+
+
+<div class='col-sm-8 col-sm-offset-2'>
+		{% for plant in plantResult %}
+		<div class="row">
+  		<div class="col-sm-12">
+    		<div class="thumbnail">
+      	<img src= "plant.photo_url" alt="...">
+      	<div class="caption">
+        	<h3>{{plant.plant_id}} : {{plant.common_name}} | {{plant.scientific_name}}</h3>
+        	<p><a href="/plants/plantResults?q={{plant.plant_id}} " class="btn btn-primary" role="button">View</a></p>
+      	</div>
+    		</div>
+  		</div>
+		</div>
+		{% endfor %}
+</div>
+
+{% endblock %}

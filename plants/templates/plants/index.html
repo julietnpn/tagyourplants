@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Welcome to PlantyPictures{% endblock %}
+
+
+
+
+<!-- <div id="search" class="text-center middle">
+    <input id="term" class="form-control text-center" type="text" placeholder="Search Plant"/>
+    <a id="hit" type="button" class="btn btn-lg"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
+  </div> -->
+{% block content %}
+  <form action ="/searchResults/" method="GET">
+    <input type="text" name="q">
+    <button id ="searchbutton" type="Search!"> Search </button>
+  </form>
+
+<ul>
+  <li><img src="http://pbs.twimg.com/media/CnG10f9XgAE_ovO.jpg" /></li>
+  <li><img src="http://pbs.twimg.com/media/CnaSk45WcAA5qQV.jpg" /></li>
+  <li><img src="http://pbs.twimg.com/media/CnVCDzvW8AAK3Ol.jpg" /></li>
+  <li><img src="http://pbs.twimg.com/media/CnFc6aUXYAIheWK.jpg" /></li>
+  <li><img src="https://farm2.staticflickr.com/1594/26051537276_8aa5924133.jpg" /></li>
+  <li><img src="https://farm2.staticflickr.com/1638/25742417102_85ac7b71ec.jpg" /></li>
+  <li><img src="https://farm9.staticflickr.com/8862/27747562143_85b2a2d4f5.jpg" /></li>
+  <li><img src="https://farm8.staticflickr.com/7369/26317482134_2c48fc75aa.jpg" /></li>
+</ul>
+{% endblock %}

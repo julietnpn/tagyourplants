@@ -1,0 +1,44 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}PlantyPictures Search Result{% endblock %}
+
+
+{% block content %}
+{% for plant in plantResult %}
+<h1> {{plant.plant_id}} {{ plant.common_name }} / <i>{{ plant.scientific_name }}</i></b></h1>
+{% endfor %}
+
+
+{% for post in postResult %}
+	<P> Post from: {{post.platform}} </p>
+	<p> <b>Tags:</b> {{ post.related_tag }} </p>
+	<p> <b>Post @</b> {{ post.post_date }} | {{post.geo_location}} </p>
+	<p> <b>User_name</b> {{post.user_name}} </p>
+	<p> <b>Content:</b> {{ post.content }} </p>
+	<p> Link to original post? <a href="{{post.link}}" target="_top">Click here!</a></p>
+
+	<p>
+	<a href="{{post.photo_url}}">
+		<img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;" alt="{{ post.plant_scientific_name }}" class="img-rounded">
+	</a>
+	</p>
+
+<div class="pagination">
+	<span class="step-links">
+			{% if postResult.has_previous %}
+					<a href="?q={{ post.plant.plant_id }}&&page={{ postResult.previous_page_number }}">previous</a>
+			{% endif %}
+
+			<span class="current">
+					Page {{ postResult.number }} of {{ postResult.paginator.num_pages }}.
+			</span>
+
+			{% if postResult.has_next %}
+					<a href="?q={{ post.plant.plant_id }}&&page={{ postResult.next_page_number }}">next</a>
+			{% endif %}
+	</span>
+	{% endfor %}
+
+</div>
+
+{% endblock %}
