@@ -12,21 +12,27 @@
 			{% endfor %}
 		</div> -->
 
+<!-- get_object_or_404
+post_id
+find the post basaed on post_id
+and use post.img_url
+-->
 
 <div class='col-sm-8 col-sm-offset-2'>
-		{% for plant in plantResult %}
-		<div class="row">
-  		<div class="col-sm-12">
-    		<div class="thumbnail">
-      	<img src= "plant.photo_url" alt="...">
-      	<div class="caption">
-        	<h3>{{plant.plant_id}} : {{plant.common_name}} | {{plant.scientific_name}}</h3>
-        	<p><a href="/plants/plantResults?q={{plant.plant_id}} " class="btn btn-primary" role="button">View</a></p>
-      	</div>
-    		</div>
-  		</div>
-		</div>
-		{% endfor %}
+	{% for r in coverItem %}
+	<div class ="row">
+			<div class ="col-sm-12">
+				<div class="thumbnail">
+					<img src= {{r.photo_url}} style="max-height: 150px; max-width: 150px; float:left" alt="{{ r.plant.scientific_name }}" class="img-rounded">
+					<div class="caption">
+						<h3>{{r.plant.plant_id}}: {{r.plant.common_name}} | {{r.plant.scientific_name}} </h3>
+						<p> Show the number and native or not here </p>
+						<p><a href="/plants/plantResults?q={{r.plant.plant_id}} " class="btn btn-primary" role="button">View</a></p>
+	      	</div>
+	    	</div>
+	  	</div>
+	</div>
+	{% endfor %}
 </div>
 
 {% endblock %}
