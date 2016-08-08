@@ -18,7 +18,7 @@ def search_form(request):
 def result_list(request):
     if('q' in request.GET):
         query = request.GET['q']
-        postResult = PlantPost.objects.filter(Q(plant__common_name__icontains=query) | Q(plant__scientific_name__icontains=query)).order_by('-score')
+        postResult = PlantPost.objects.filter(Q(plant__common_name__icontains=query) | Q(plant__scientific_name__icontains=query)).order_by('-score','plant_id')
 
         topResult_set = list()
         topPlant_set = set()
@@ -30,7 +30,7 @@ def result_list(request):
         #get the each plant_id
         for plant in topPlant_set:
             if plant:
-                topPlant = PlantPost.objects.filter(plant__plant_id__icontains=plant).order_by('-score')
+                topPlant = PlantPost.objects.filter(Q(plant__plant_id__icontains=plant)).order_by('-score', 'plant_id')
                 r = list(topPlant[:1])
                 if r:
                     top_post = r[0]
@@ -58,8 +58,9 @@ def get_plant(request):
         query = request.GET['q']
 
     plantResult = Plant.objects.filter(Q(plant_id__exact=query))
-    postResult = PlantPost.objects.filter(plant__plant_id=query).order_by('-score')
+    postResult = PlantPost.objects.filter(Q(plant__plant_id=query)).order_by('-score','post_id')
 
+    #Pagination cause some duplicate!!!
     paginator = Paginator(postResult, 1) # Show 25 contacts per page
     page = request.GET.get('page')
     try:
@@ -74,7 +75,6 @@ def get_plant(request):
     context = {
         "postResult": postResult,
         "plantResult": plantResult,
-        "top_post": top_post,
     }
     return TemplateResponse(request, 'plants/plantResults.html', context)
 

@@ -1,29 +1,67 @@
-{% extends 'layout/base.html' %}
+{% extends 'layout/resultListBase.html' %}
 
 {% block title %}PlantyPictures Search Result{% endblock %}
 {% block content %}
 
-<!-- <div class='col-sm-6 col-sm-offset-3'>
-	<div class='thumbnail'>
-		<div class='plantEntry'>
-			{% for plant in plantResult %}
-				<h3><a href="/plants/plantResults?q={{plant.plant_id}} ">ID: {{plant.plant_id}}; Common name: {{plant.common_name }} / Scientific name: {{ plant.scientific_name }}
-					<samll> ca_native? {{plant.ca_native}} </small></h3>
-			{% endfor %}
+<!-- .col-xs-12 .col-md-8.col-xs-6 .col-md-4 -->
+<div class="row">
+<div class ='.col-md-4' id="category_sidebar">
+	<!-- <div class="checkbox">
+  <label>
+    <input type="checkbox" value="">
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+	</div> -->
+			<!-- /#sidebar-wrapper -->
+<!--
+	<div id="sidebar">
+		<h3>CART</h3>
+	    <div id="cart">
+	    	<span class="empty">No items in cart.</span>
+	    </div>
+
+	    <h3>CATEGORIES</h3>
+	    <div class="checklist categories">
+	    	<ul>
+	        	<li><a href=""><span></span>Season</a></li>
+	            <li><a href=""><span></span>Plant type</a></li>
+	            <li><a href=""><span></span>Generic Term</a></li>
+	            <li><a href=""><span></span>Geo Location</a></li>
+	            <li><a href=""><span></span>Habitat</a></li>
+	            <li><a href=""><span></span>Weather</a></li>
+	            <li><a href=""><span></span>Status</a></li>
+	            <li><a href=""><span></span>Related Action</a></li>
+	        </ul>
+	    </div>
+
+	    <h3>COLORS</h3>
+	    <div class="checklist colors">
+	    	<ul>
+	        	<li><a href=""><span></span>Beige</a></li>
+	            <li><a href=""><span style="background:#222"></span>Black</a></li>
+	            <li><a href=""><span style="background:#6e8cd5"></span>Blue</a></li>
+	            <li><a href=""><span style="background:#f56060"></span>Brown</a></li>
+	            <li><a href=""><span style="background:#44c28d"></span>Green</a></li>
+	        </ul>
+
+	        <ul>
+	        	<li><a href=""><span style="background:#999"></span>Grey</a></li>
+	            <li><a href=""><span style="background:#f79858"></span>Orange</a></li>
+	            <li><a href=""><span style="background:#b27ef8"></span>Purple</a></li>
+	            <li><a href=""><span style="background:#f56060"></span>Red</a></li>
+	            <li><a href=""><span style="background:#fff;border: 1px solid #e8e9eb;width:13px;height:13px;"></span>White</a></li>
+	        </ul>
+	    </div>
 		</div> -->
+</div>
 
-<!-- get_object_or_404
-post_id
-find the post basaed on post_id
-and use post.img_url
--->
 
-<div class='col-sm-8 col-sm-offset-2'>
+<div class='.col-md-8' id="eachPlant">
 	{% for r in coverItem %}
 	<div class ="row">
 			<div class ="col-sm-12">
 				<div class="thumbnail">
-					<img src= {{r.photo_url}} style="max-height: 150px; max-width: 150px; float:left" alt="{{ r.plant.scientific_name }}" class="img-rounded">
+					<img id="thumbnailCover" src= {{r.photo_url}} style="max-height: 150px; max-width: 150px; float:left" alt="{{ r.plant.scientific_name }}" class="img-rounded">
 					<div class="caption">
 						<h3>{{r.plant.plant_id}}: {{r.plant.common_name}} | {{r.plant.scientific_name}} </h3>
 						<p> Show the number and native or not here </p>
@@ -33,6 +71,7 @@ and use post.img_url
 	  	</div>
 	</div>
 	{% endfor %}
+</div>
 </div>
 
 {% endblock %}
