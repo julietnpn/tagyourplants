@@ -4,9 +4,9 @@
 {% block content %}
 
 <!-- .col-xs-12 .col-md-8.col-xs-6 .col-md-4 -->
-<div class="row">
+<!--<div class="row">
 <div class ='.col-md-4' id="category_sidebar">
-	<!-- <div class="checkbox">
+	<div class="checkbox">
   <label>
     <input type="checkbox" value="">
     Option one is this and that&mdash;be sure to include why it's great
@@ -15,11 +15,6 @@
 			<!-- /#sidebar-wrapper -->
 <!--
 	<div id="sidebar">
-		<h3>CART</h3>
-	    <div id="cart">
-	    	<span class="empty">No items in cart.</span>
-	    </div>
-
 	    <h3>CATEGORIES</h3>
 	    <div class="checklist categories">
 	    	<ul>
@@ -52,10 +47,95 @@
 	            <li><a href=""><span style="background:#fff;border: 1px solid #e8e9eb;width:13px;height:13px;"></span>White</a></li>
 	        </ul>
 	    </div>
-		</div> -->
-</div>
+		</div>
+</div>-->
+<div class="row">
+	<div class="col-xs-12 col-md-3 push-md-9 bd-sidebar">
+		<nav class="bd-links" id="docsNavbarContent">
+			<div class="bd-toc-item active">
+				<a class="bd-toc-link" href="/getting-started/introduction">
+					Filter By Tags:
+				</a>
 
+				<div class="row">
+				<div class ='.col-md-4' id="category_sidebar">
+					<div id="sidebar">
+					    <h3>CATEGORIES</h3>
+					    <div class="checklist categories">
+								    <form>
+								        <h4>Season:</h4>
+								        <div class="checkbox">
+								            <label><input type="checkbox" name="season"> Spring</label>
+								        </div>
+								        <div class="checkbox">
+								            <label><input type="checkbox" name="season"> Summer</label>
+								        </div>
+								        <div class="checkbox">
+								            <label><input type="checkbox" name="season"> Fall</label>
+								        </div>
+												<div class="checkbox">
+								            <label><input type="checkbox" name="season"> Winter</label>
+								        </div>
+								        <hr>
+								        <h4>Plant type</h4>
+												<hr>
+												<h4>Generic Term</h4>
+												<hr>
+												<h4>Geo Location</h4>
+												<hr>
+												<h4>Habitat</h4>
+												<hr>
+												<h4>Weather</h4>
+												<hr>
+												<h4>Action</h4>
+								    </form>
+								</div>
+					    </div>
 
+					    <h3>COLORS</h3>
+					    <div class="checklist colors">
+					    	<ul>
+					        	<li><a href=""><span></span>Beige</a></li>
+					            <li><a href=""><span style="background:#222"></span>Black</a></li>
+					            <li><a href=""><span style="background:#6e8cd5"></span>Blue</a></li>
+					            <li><a href=""><span style="background:#f56060"></span>Brown</a></li>
+					            <li><a href=""><span style="background:#44c28d"></span>Green</a></li>
+					        </ul>
+
+					        <ul>
+					        	<li><a href=""><span style="background:#999"></span>Grey</a></li>
+					            <li><a href=""><span style="background:#f79858"></span>Orange</a></li>
+					            <li><a href=""><span style="background:#b27ef8"></span>Purple</a></li>
+					            <li><a href=""><span style="background:#f56060"></span>Red</a></li>
+					            <li><a href=""><span style="background:#fff;border: 1px solid #e8e9eb;width:13px;height:13px;"></span>White</a></li>
+					        </ul>
+					    </div>
+						</div>
+
+			</div>
+		</nav>
+	</div>
+
+	<div class="col-xs-12 col-md-9 pull-md-3 bd-content">
+	<h1 class="bd-title" id="content">Search Results</h1>
+	{% for r in coverItem %}
+	<div class ="row">
+			<div class ="col-sm-12">
+				<div class="thumbnail">
+					<img id="thumbnailCover" src= {{r.photo_url}} style="max-height: 200px; max-width: 200px; float:left" class="img-rounded">
+					<div class="caption">
+						<h2>{{r.plant.plant_id}}: {{r.plant.common_name}} | {{r.plant.scientific_name}} </h3>
+						<p> Show the number and native or not here </p>
+						<p><a href="/plants/plantResults?q={{r.plant.plant_id}} " class="btn btn-primary" role="button">View</a></p>
+					</div>
+				</div>
+			</div>
+	</div>
+	{% endfor %}
+
+{% endblock %}
+<!--
+<!-- <div class="col-xs-12 col-md-9 pull-md-3 bd-content">
 <div class='.col-md-8' id="eachPlant">
 	{% for r in coverItem %}
 	<div class ="row">
@@ -71,7 +151,4 @@
 	  	</div>
 	</div>
 	{% endfor %}
-</div>
-</div>
-
-{% endblock %}
+</div> -->

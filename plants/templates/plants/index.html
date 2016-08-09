@@ -1,17 +1,18 @@
 {% extends 'layout/base.html' %}
-
+{% load static from staticfiles %}
 {% block title %}Welcome to PlantyPictures{% endblock %}
-
-
-<!-- <div id="search" class="text-center middle">
-    <input id="term" class="form-control text-center" type="text" placeholder="Search Plant"/>
-    <a id="hit" type="button" class="btn btn-lg"><i class="fa fa-search fa-2x" aria-hidden="true"></i></a>
-  </div> -->
 {% block content %}
-  <form action ="/searchResults/" method="GET">
+  <!-- <img src="{% static "images/planty_launcher.png" %}" class="app_icon"> -->
+
+  <form class="search" action="/searchResults/" method="GET">
+  <input type="text" name ="q" placeholder="Search here..." required>
+  <button type="submit">Search</button>
+</form>
+
+  <!-- <form action ="/searchResults/" method="GET">
     <input type="text" name="q">
     <button id ="searchbutton" type="Search!"> Search </button>
-  </form>
+  </form> -->
 
 <ul class="piclist">
   <li><img src="http://pbs.twimg.com/media/CnG10f9XgAE_ovO.jpg" /></li>

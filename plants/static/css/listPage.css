@@ -1,0 +1,38 @@
+/*.push-md-9 {
+    left: -12%;
+}*/
+
+/*.pull-md-3 {
+    right: 10%;
+
+}*/
+
+p {
+    margin-left: 5cm;
+}
+
+.row {
+    margin-right: -60px;
+    margin-left: -15px;
+}
+
+.caption >h2,p
+{
+    margin-left: 5cm;
+}
+.thumbnail img
+{
+  min-height: 155px;
+  width: 155px;
+  float: right;
+}
+
+img {
+  position: absolute;
+  margin: auto;
+  float: left;
+  width: 50%;
+  height: 50%;
+  border-radius: 1px;
+  box-shadow: 0 0 0 4px #fff;
+}

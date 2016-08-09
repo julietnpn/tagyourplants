@@ -2,45 +2,74 @@
 
 {% block title %}PlantyPictures Search Result{% endblock %}
 
-<div class='col-sm-8 col-sm-offset-12'>
+<div class='col-sm-8 col-sm-offset-12' id="plantTitle">
 {% block content %}
 {% for plant in plantResult %}
-<h1> {{plant.plant_id}} {{ plant.common_name }} / <i>{{ plant.scientific_name }}</i></b></h1>
+	<h1> {{plant.plant_id}} {{ plant.common_name }} / <i>{{ plant.scientific_name }}</i></b></h1>
 {% endfor %}
 
-<!-- </div>
-<div class='col-sm-8 col-sm-offset-2'> -->
-
 {% for post in postResult %}
-	<P> Post from: {{post.platform}} </p>
-	<p> Post_ID: {{post.post_id}}</p>
-	<p> <b>Tags:</b> {{ post.related_tag }} </p>
-	<p> <b>Post @</b> {{ post.post_date }} | {{post.geo_location}} </p>
-	<p> <b>User_name</b> {{post.user_name}} </p>
-	<p> <b>Content:</b> {{ post.content }} </p>
-	<p> Link to original post? <a href="{{post.post_link}}" target="_top">Click here!</a></p>
-	<p>
-	<a href="{{post.photo_url}}">
+	<h3>
+		Plant Gallery</h3>
+		<div class="flipster">
+		  <ul>
+		    <li><img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;"> </li>
+				<li><img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;"> </li>
+				<li><img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;"> </li>
+				<li><img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;"> </li>
+				<li><img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;"> </li>
+		  </ul>
+		</div>
+
+		<!-- <p>
+		<a href="{{post.photo_url}}">
 		<img src= {{post.photo_url}} style="max-height: 300px; max-width: 300px;" alt="{{ post.plant.scientific_name }}" class="img-rounded">
-	</a>
-	</p>
+		</a>
+		</p> -->
+	</div>
 
-<div class="pagination">
-	<span class="step-links">
-			{% if postResult.has_previous %}
-					<a href="?q={{ post.plant.plant_id }}&&page={{ postResult.previous_page_number }}">previous</a>
-			{% endif %}
+	<div class='col-xs-12 col-md-9 pull-md-3 bd-content' id="plantMoreInfo">
+			<h3 class="subtitle">
+				Platform</h3>
+			<p> {{post.platform}} </p>
+			<h3 class="subtitle">
+				User name:</h3>
+			<p> {{post.user_name}} </p>
+			<h3 class="subtitle">
+				Post_ID: </h3>
+			<p> {{post.post_id}} </p>
+			<h3 class="subtitle">
+				Link to original post:</h3>
+			<p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
+			<h3 class="subtitle">
+			  Tags: </h3>
+			<p> {{post.related_tag}} </p>
+			<h3 class="subtitle">
+				Post date & Location: </h3>
+			<p> {{post.post_date}} | @{{post.geo_location}}</p>
+			<h3 class="subtitle">
+				Post Content: </h3>
+			<p> {{ post.content }} </p>
+		</div>
 
-			<span class="current">
-					Page {{ postResult.number }} of {{ postResult.paginator.num_pages }}.
+		<div class="pagination">
+			<span class="step-links">
+					{% if postResult.has_previous %}
+							<a href="?q={{ post.plant.plant_id }}&&page={{ postResult.previous_page_number }}">previous</a>
+					{% endif %}
+
+					<span class="current">
+							Page {{ postResult.number }} of {{ postResult.paginator.num_pages }}.
+					</span>
+
+					{% if postResult.has_next %}
+							<a href="?q={{ post.plant.plant_id }}&&page={{ postResult.next_page_number }}">next</a>
+					{% endif %}
 			</span>
+			{% endfor %}
+		</div>
 
-			{% if postResult.has_next %}
-					<a href="?q={{ post.plant.plant_id }}&&page={{ postResult.next_page_number }}">next</a>
-			{% endif %}
-	</span>
-	{% endfor %}
-</div>
+
 </div>
 
 {% endblock %}

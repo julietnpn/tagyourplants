@@ -12,7 +12,14 @@
 
         <!-- Custom Style for this template -->
         <!-- <link rel="stylesheet" href="{% static "css/homepageGridPic.css" %}" alt="gridPic"> -->
-        <link rel="stylesheet" href="{% static "css/ResultPage.css" %}" alt="resultList">
+        <!-- <link rel="stylesheet" href="{% static "css/ResultPage.css" %}" alt="resultList"> -->
+        <link rel="stylesheet" href="{% static "css/flipster.css" %}" alt="flipster">
+        <!-- <link rel="text/javascript" href="{% static "js/flipster.js" %}">
+        <link rel="text/javascript" href="{% static "js/jquery.js" %}"> -->
+        <link type="text/javascript" href="{% static "js/flipster.js" %}">
+        <!-- <link type="text/javascript" href="{% static 'js/bootstrap.js' %}">
+        <link type="text/javascript" href="{% static 'js/bootstrap.min.js' %}">
+        <link type="text/javascript" href="{% static 'js/jquery.js' %}"> -->
 </head>
 
 <body>
@@ -27,7 +34,6 @@
     </button>
     <a class="navbar-brand" href="/">PlantyPictures Project</a>
   </div>
-
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
@@ -40,7 +46,6 @@
         </ul>
       </li>
     </ul>
-
     <div class="col-sm-3 col-md-3">
         <form class="navbar-form" role="search">
         <div class="input-group">
@@ -51,7 +56,6 @@
         </div>
         </form>
     </div>
-
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#">About</a></li>
       <li><a href="#">Contact Us</a></li>
@@ -64,13 +68,18 @@
 	{% endblock %}
 </div>
 
-<script src="{{ STATIC_URL }}js/jquery.js"></script>
-<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-<script src="{{ STATIC_URL }}js/project.js"></script>
+<!-- <link rel="stylesheet" href="{% static "css/flipster.css" %}" alt="flipster"> -->
+
+
+<script src="{% static "js/jQuery.js" %}" ></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/flipster.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}" ></script>
 <!-- Latest compiled and minified JavaScript -->
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+<!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
 
 </body>
 </html>
