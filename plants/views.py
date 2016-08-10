@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.template.response import TemplateResponse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from .forms import SearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -13,7 +13,7 @@ def homepage(request):
     return TemplateResponse(request, 'plants/index.html')
 
 def search_form(request):
-    return render(request, 'plants/plantResults.html')
+    return render(request, 'plantResults.html')
 
 def result_list(request):
     if('q' in request.GET):
@@ -57,6 +57,7 @@ def get_plant(request):
     if('q' in request.GET):
         query = request.GET['q']
 
+
     plantResult = Plant.objects.filter(Q(plant_id__exact=query))
     postResult = PlantPost.objects.filter(Q(plant__plant_id=query)).order_by('-score','post_id')
 
@@ -79,4 +80,49 @@ def get_plant(request):
     return TemplateResponse(request, 'plants/plantResults.html', context)
 
 
-# def get_post_by_tag(request):
+def get_post_by_tag(request):
+    if('season' in request.GET):
+        query = request.GET['season']
+
+        tagResult = PlantPost.objects.filter(Q(related_tag__icontains=query))
+        resultList = list()
+
+        for t in tagResult:
+            resultList.append(getattr(t, 'post_id'))
+
+        paginator = Paginator(tagResult, 3) # Show 25 contacts per page
+        page = request.GET.get('page')
+        try:
+            postResult = paginator.page(page)
+        except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+            postResult = paginator.page(1)
+        except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+            postResult = paginator.page(paginator.num_pages)
+
+        if tagResult:
+            context={
+                "tagResult": tagResult,
+                "query": query,
+                "resultList": resultList,
+                "postResult": postResult,
+                }
+            return TemplateResponse(request, 'plants/tagResult.html', context)
+        else:
+            return HttpResponseNotFound
+
+def get_post_by_post_id(request):
+        if('postID' in request.GET):
+            query = request.GET['postID']
+
+            tagResult = PlantPost.objects.filter(Q(post_id__exact=query))
+
+            if tagResult:
+                context={
+                    "tagResult": tagResult,
+                    "query": query,
+                    }
+                return TemplateResponse(request, 'plants/tagResult.html', context)
+            else:
+                return HttpResponseNotFound

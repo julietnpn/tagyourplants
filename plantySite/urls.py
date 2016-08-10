@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^$', 'plants.views.homepage', name='homepage'),
     url(r'^plants/', include('plants.urls')),
     url(r'^searchResults/', 'plants.views.result_list'),
+    url(r'^tagResult/', 'plants.views.get_post_by_tag'),
 
 ]
 
