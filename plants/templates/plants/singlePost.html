@@ -1,0 +1,45 @@
+{% extends 'layout/plantResultBase.html' %}
+
+{% block title %}PlantyPictures Search Result{% endblock %}
+
+<!-- <div class='col-sm-8 col-sm-offset-12' id="plantTitle"> -->
+{% block content %}
+
+<!-- Carousel -->
+{% for post in singlePost %}
+
+  <img src= {{post.photo_url}} style="max-height: 500px; max-width: 500px;"> </li>
+
+	<div class='col-xs-12 col-md-9 pull-md-3 bd-content' id="plantMoreInfo">
+			<h3 class="subtitle">
+				Platform</h3>
+			<p> {{post.platform}} </p>
+			<h3 class="subtitle">
+				User name:</h3>
+			<p> {{post.user_name}} </p>
+			<h3 class="subtitle">
+				Post_ID: </h3>
+			<p> {{post.post_id}} </p>
+			<h3 class="subtitle">
+				Link to original post:</h3>
+			<p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
+			<h3 class="subtitle">
+			  Tags: </h3>
+			<p> {{post.related_tag}} </p>
+			<h3 class="subtitle">
+				Post date & Location: </h3>
+			<p> {{post.post_date}} | @{{post.geo_location}}</p>
+			<h3 class="subtitle">
+				Post Content: </h3>
+			<p class="minimize"> {{ post.content }} </p>
+	</div>
+  {% endfor %}
+  {% endblock %}
+<!-- LINKED NAV
+<ol class="carousel-linked-nav pagination">
+  <li class="active"><a href="#1">1</a></li>
+  <li><a href="#2">2</a></li>
+  <li><a href="#3">3</a></li>
+</ol>-->
+
+<!-- </div> -->

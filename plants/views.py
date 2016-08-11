@@ -18,7 +18,8 @@ def search_form(request):
 def result_list(request):
     if('q' in request.GET):
         query = request.GET['q']
-        postResult = PlantPost.objects.filter(Q(plant__common_name__icontains=query) | Q(plant__scientific_name__icontains=query)).order_by('-score','plant_id')
+#        postResult = PlantPost.objects.filter(Q(plant__common_name__icontains=query) | Q(plant__scientific_name__icontains=query)).order_by('-score','plant_id')
+        postResult = PlantPost.objects.filter(Q(plant__common_name__iregex=query) | Q(plant__scientific_name__iregex=query)).order_by('-score','post_id')
 
         topResult_set = list()
         topPlant_set = set()
@@ -62,7 +63,7 @@ def get_plant(request):
     postResult = PlantPost.objects.filter(Q(plant__plant_id=query)).order_by('-score','post_id')
 
     #Pagination cause some duplicate!!!
-    paginator = Paginator(postResult, 1) # Show 25 contacts per page
+    paginator = Paginator(postResult,25) # Show 25 contacts per page
     page = request.GET.get('page')
     try:
         postResult = paginator.page(page)
@@ -112,17 +113,31 @@ def get_post_by_tag(request):
         else:
             return HttpResponseNotFound
 
-def get_post_by_post_id(request):
+def get_singlepost_by_post_id(request):
         if('postID' in request.GET):
             query = request.GET['postID']
+            singlePost = PlantPost.objects.filter(Q(post_id__exact=query))
 
-            tagResult = PlantPost.objects.filter(Q(post_id__exact=query))
-
-            if tagResult:
+            if singlePost:
                 context={
-                    "tagResult": tagResult,
+                    "singlePost": singlePost,
                     "query": query,
                     }
-                return TemplateResponse(request, 'plants/tagResult.html', context)
+                return TemplateResponse(request, 'plants/singlePost.html', context)
             else:
                 return HttpResponseNotFound
+
+def gallary_for_each_plant(request):
+    if('season' in request.GET):
+        query = request.GET['season']
+
+    plantPosts = PlantPost.objects.filter(Q(related_tag__icontains=query))
+
+    if plantPosts:
+        context={
+                "plantPosts": plantPosts,
+                "query": query,
+                }
+        return TemplateResponse(request, 'plants/gallery.html', context)
+    else:
+        return HttpResponseNotFound

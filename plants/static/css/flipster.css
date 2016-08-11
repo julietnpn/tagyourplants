@@ -8,6 +8,11 @@
   overflow-y: visible;
 }
 
+.col-md-9 {
+    width: 60%;
+    margin-left: 20%;
+}
+
 .subtitle {
     border-top: 1px solid #345673;
     padding-top: 16px;
