@@ -14,18 +14,21 @@
 			<h3 class="subtitle">
 				Platform</h3>
 			<p> {{post.platform}} </p>
-			<h3 class="subtitle">
-				User name:</h3>
+      <h3 class="subtitle">
+			  Tags:</h3>
+      {% for tag in tag_list %}
+        {% if tag != "" %}
+          <span class = "label label-info"> {{tag}}</span>
+          <!-- <a href="#"> {{tag}} <span class="badge"> n </span></a> -->
+        {% endif %}
+      {% endfor %}
+			<h3 class="subtitle">User name:</h3>
 			<p> {{post.user_name}} </p>
-			<h3 class="subtitle">
-				Post_ID: </h3>
+			<h3 class="subtitle">Post_ID: </h3>
 			<p> {{post.post_id}} </p>
-			<h3 class="subtitle">
-				Link to original post:</h3>
+			<h3 class="subtitle">Link to original post:</h3>
 			<p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
-			<h3 class="subtitle">
-			  Tags: </h3>
-			<p> {{post.related_tag}} </p>
+			<!-- <p> {{post.related_tag}} </p> -->
 			<h3 class="subtitle">
 				Post date & Location: </h3>
 			<p> {{post.post_date}} | @{{post.geo_location}}</p>

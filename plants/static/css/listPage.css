@@ -6,8 +6,8 @@
     right: 10%;
 
 }*/
-
-/*.colors-large{
+/*
+.colors-large{
 	margin-bottom:38px;
 }
 .colors-large li{
@@ -33,6 +33,11 @@
 
 p {
     margin-left: 5cm;
+}
+
+.panel-group {
+    margin-bottom: 20px;
+    margin-top: 70px;
 }
 
 .row {

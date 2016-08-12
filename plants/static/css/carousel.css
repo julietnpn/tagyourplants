@@ -15,20 +15,24 @@
   position: relative;;
 }
 
+
+b{
+color: darkgreen;
+}
+
+
 img {
     vertical-align: middle;
     margin-left: 320px;
     /* margin-right: 211px; */
 }
 
-
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: auto;
-    width: 60%;
-    height: 60%;
+  display: block;
+  max-width: 500px;
+  max-height: 500px;
+  height: auto;
+  margin: auto;
 }
 
 .carousel-control.left {

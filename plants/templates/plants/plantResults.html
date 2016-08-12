@@ -5,26 +5,36 @@
 <div class='col-sm-8 col-sm-offset-12' id="plantTitle">
 {% block content %}
 
-<h2><span>Plant Gallery: <span></h2>
+<h2><span>Plant Gallery for <b>{{firstPost.plant.common_name}} | <i>{{firstPost.plant.scientific_name}}</i></b><span></h2>
 
-<div id="myCarousel" class="carousel slide">
-  <!-- Carousel items -->
-  <div class="carousel-inner">
-
-    {% for post in postResult %}
-    <div class="active item">
-        <img src={{post.photo_url}} />
-        <div class="carousel-caption">
-            <h1> {{post.plant.common_name}} | <i>{{post.plant.scientific_name}}</i></h1>
+  <div id="myCarousel" class="carousel slide">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+          <div class="active item">
+            <img src={{firstPost.photo_url}} />
+            <div class="carousel-caption">
+            <h3 class="subtitle">
+              Platform</h3>
+            <p> {{firstPost.platform}} </p>
+            <h3 class="subtitle">
+              Tags: </h3>
+            <p> {{firstPost.related_tag}} </p>
+            <h3 class="subtitle">
+              Post date & Location: </h3>
+            <p> {{firstPost.post_date}} | @{{firstPost.geo_location}}</p>
+            <h3 class="subtitle">
+              Post Content: </h3>
+            <p class="minimize"> {{ firstPost.content }} </p>
+            <p><a class="btn btn-large btn-primary" href="/plants/singlePost/?postID={{firstPost.post_id}} ">Learn more</a></p>
+          </div>
+          </div>
+          {% for post in restPosts %}
+          <div class="item">
+            <img src={{post.photo_url}} />
+            <div class="carousel-caption">
             <h3 class="subtitle">
               Platform</h3>
             <p> {{post.platform}} </p>
-            <h3 class="subtitle">
-              User name:</h3>
-            <p> {{post.user_name}} </p>
-            <h3 class="subtitle">
-              Post_ID: </h3>
-            <p> {{post.post_id}} </p>
             <h3 class="subtitle">
               Link to original post:</h3>
             <p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
@@ -39,15 +49,12 @@
             <p class="minimize"> {{ post.content }} </p>
             <p><a class="btn btn-large btn-primary" href="/plants/singlePost/?postID={{post.post_id}} ">Learn more</a></p>
         </div>
+      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-
-    <div class="item">
-    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
   </div>
-  <!-- Carousel nav -->
-  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-</div>
 
 {% endblock %}

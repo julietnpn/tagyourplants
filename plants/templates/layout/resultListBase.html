@@ -12,6 +12,7 @@
 
         <!-- Custom Style for this template -->
         <link rel="stylesheet" href="{% static "css/listPage.css" %}" alt="listPage">
+        <link type="text/javascript" href="{% static "js/accordion.js" %}">
 </head>
 
 <body>
@@ -59,73 +60,128 @@
 </nav>
 
 <div class="container">
-  <div class="col-xs-12 col-md-3 push-md-9 bd-sidebar">
-    <nav class="bd-links" id="docsNavbarContent">
-      <div class="bd-toc-item active">
-        <h2>Filter By Tags:</h2>
-        <div class="row">
-        <div class ='.col-md-4' id="category_sidebar">
-          <div id="sidebar">
-              <div class="checklist categories">
-                  <h4>Season:</h4>
-                    <form action="/tagResult/" method="GET">
-                        <div class="checkbox">
-                            <label name="choice"><input type="checkbox" name="season" value="spring"> Spring</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="season" value="summer"> Summer</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="season" value="fall"> Fall</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="season" value="winter"> Winter</label>
-                        </div>
-                        <div class="submit">
-                            <button type="submit">Submit</button>
-                        </div>
-                        <hr>
-                  <h4>Plant type</h4>
-                        <hr>
-                  <h4>Generic Term</h4>
-                        <hr>
-                  <h4>Geo Location</h4>
-                        <hr>
-                  <h4>Habitat</h4>
-                        <hr>
-                  <h4>Weather</h4>
-                        <hr>
-                  <h4>Action</h4>
-                        <hr>
+      <div class="row">
+          <div class="col-md-3">
+              <div class="panel-group" id="accordion">
 
-                    </form>
-                </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                              </span>Season</a>
+                          </h4>
+                      </div>
+                      <div id="collapseOne" class="panel-collapse collapse in">
+                          <div class="panel-body">
+                              <table class="table">
+                                <form action="/tagResult/" method="GET">
+                                    <div class="checkbox">
+                                        <label name="choice"><input type="checkbox" name="tag" value="spring"> Spring</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="tag" value="summer"> Summer</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="tag" value="fall"> Fall</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="tag" value="winter"> Winter</label>
+                                    </div>
+                                    <div class="submit">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                  </form>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                              </span>Color</a>
+                          </h4>
+                      </div>
+                      <div id="collapseTwo" class="panel-collapse collapse">
+                          <div class="panel-body">
+                              <table class="table">
+
+                                <form action="/tagResult/" method="GET">
+                                    <div class="checkbox">
+                                        <label name="choice"><input type="checkbox" name="tag" value="yellow"> Yellow</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="tag" value="red"> Red</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="tag" value="black"> Black</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" name="tag" value="white"> White</label>
+                                    </div>
+
+                                    <div class="submit">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                  </form>
+
+
+                                <!-- <div class="colors-large">
+                                    <ul>
+                                        <li><a href=""><span style="background:#222"></span>Black</a></li>
+                                        <li><a href=""><span style="background:#6e8cd5"></span>Blue</a></li>
+                                        <li><a href=""><span style="background:#f56060"></span>Brown</a></li>
+                                        <li><a href=""><span style="background:#44c28d"></span>Green</a></li>
+                                    </ul>
+                                    <ul>
+                                      <li><a href=""><span style="background:#999"></span>Grey</a></li>
+                                        <li><a href=""><span style="background:#f79858"></span>Orange</a></li>
+                                        <li><a href=""><span style="background:#b27ef8"></span>Purple</a></li>
+                                        <li><a href=""><span style="background:#f56060"></span>Red</a></li>
+                                        <li><a href=""><span style="background:#fff;border: 1px solid #e8e9eb;width:13px;height:13px;"></span>White</a></li>
+                                    </ul>
+                                </div> -->
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                              </span>Taxonomy</a>
+                          </h4>
+                      </div>
+                      <div id="collapseThree" class="panel-collapse collapse">
+                          <div class="panel-body">
+                              <table class="table">
+                                  <!--For loop the toxonomy table -->
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                              </span>Habitat</a>
+                          </h4>
+                      </div>
+                      <div id="collapseFour" class="panel-collapse collapse">
+                          <div class="panel-body">
+                              <table class="table">
+
+                              </table>
+                          </div>
+                      </div>
+                  </div>
               </div>
-
-              <h3>COLORS</h3>
-              <div class="colors-large">
-                  <ul>
-                      <li><a href=""><span style="background:#222"></span>Black</a></li>
-                      <li><a href=""><span style="background:#6e8cd5"></span>Blue</a></li>
-                      <li><a href=""><span style="background:#f56060"></span>Brown</a></li>
-                      <li><a href=""><span style="background:#44c28d"></span>Green</a></li>
-                  </ul>
-
-                  <!-- <ul>
-                    <li><a href=""><span style="background:#999"></span>Grey</a></li>
-                      <li><a href=""><span style="background:#f79858"></span>Orange</a></li>
-                      <li><a href=""><span style="background:#b27ef8"></span>Purple</a></li>
-                      <li><a href=""><span style="background:#f56060"></span>Red</a></li>
-                      <li><a href=""><span style="background:#fff;border: 1px solid #e8e9eb;width:13px;height:13px;"></span>White</a></li>
-                  </ul> -->
-              </div>
-            </div>
+          </div>
+                	{% block content %}
+                	{% endblock %}
       </div>
-    </nav>
-  </div>
 
-	{% block content %}
-	{% endblock %}
 </div>
 
 <script src="{% static "js/jQuery.js" %}" ></script>
