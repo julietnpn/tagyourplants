@@ -31,7 +31,8 @@ def result_list(request):
         #get the each plant_id
         for plant in topPlant_set:
             if plant:
-                topPlant = PlantPost.objects.filter(Q(plant__plant_id__icontains=plant)).order_by('-score', 'plant_id')
+                topPlant = PlantPost.objects.filter(Q(plant__plant_id__icontains=plant))
+                #.order_by('-score', 'post_id')
                 r = list(topPlant[:1])
                 if r:
                     top_post = r[0]
@@ -60,7 +61,7 @@ def get_plant(request):
 
 
     plantResult = Plant.objects.filter(Q(plant_id__exact=query))
-    postResult = PlantPost.objects.filter(Q(plant__plant_id=query)).order_by('-score','post_id')
+    postResult = PlantPost.objects.filter(Q(plant__plant_id=query)).order_by('-score', 'post_id')
 
 
     firstPost, restPosts = postResult[0], postResult[1:]
@@ -80,7 +81,7 @@ def get_plant(request):
 
     context = {
         "postResult": postResult,
-        "plantResult": plantResult,
+        # "plantResult": plantResult,
         "firstPost": firstPost,
         "restPosts": restPosts,
     }

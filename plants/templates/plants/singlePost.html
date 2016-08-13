@@ -14,12 +14,16 @@
 			<h3 class="subtitle">
 				Platform</h3>
 			<p> {{post.platform}} </p>
-      <h3 class="subtitle">
-			  Tags:</h3>
+      <h3 class="subtitle">Tags in this post:</h3>
       {% for tag in tag_list %}
         {% if tag != "" %}
-          <span class = "label label-info"> {{tag}}</span>
-          <!-- <a href="#"> {{tag}} <span class="badge"> n </span></a> -->
+          <button type="button" class="btn btn-info btn-m">
+            <!-- <span class = "label label-info"> {{tag}}</span> -->
+            <span class="glyphicon glyphicon-tag">
+              {{tag}}
+            </span>
+          </button>
+
         {% endif %}
       {% endfor %}
 			<h3 class="subtitle">User name:</h3>

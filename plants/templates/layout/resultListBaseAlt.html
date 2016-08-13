@@ -1,0 +1,150 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}  Planty Pictures {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+        <!-- Custom Style for this template -->
+        <link rel="stylesheet" href="{% static "css/listPage.css" %}" alt="listPage">
+        <link type="text/javascript" href="{% static "js/accordion.js" %}">
+</head>
+
+<body>
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">PlantyPictures Project</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li class="home"><a href="/">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery View <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Full Plant List</a></li>
+          <li><a href="#">Other options to come</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="col-sm-3 col-md-3">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="q">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
+<div class="container">
+      <div class="row">
+          <div class="col-md-3">
+            <div id="MainMenu">
+  <div class="list-group panel">
+
+  <a href="#demo2" class= "glyphicon glyphicon-tag list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Season<i class="fa fa-caret-down"></i></a>
+    <div class="collapse" id="demo2">
+      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Spring<i class="fa fa-caret-down"></i></a>
+      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Summer<i class="fa fa-caret-down"></i></a>
+      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Fall<i class="fa fa-caret-down"></i></a>
+      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Winter<i class="fa fa-caret-down"></i></a>
+    </div>
+
+    <a href="#demo3" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Taxonomy<i class="fa fa-caret-down"></i></a>
+    <div class="collapse" id="demo3">
+      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#demo3">Species<i class="fa fa-caret-down"></i></a>
+        <div class="collapse list-group-submenu" id="SubMenu1">
+          <a href="#" class="list-group-item" data-parent="#SubMenu1">Muricata</a>
+          <a href="#" class="list-group-item" data-parent="#SubMenu1">Podophyllum</a>
+        </div>
+      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent=""></i>Family<i class="fa fa-caret-down"></i></a>
+        <div class="collapse list-group-submenu" id="SubMenu1">
+          <a href="#" class="list-group-item" data-parent="#SubMenu1">rosaceae</a>
+          <a href="#" class="list-group-item" data-parent="#SubMenu1">malvaceae</a>
+        </div>
+      <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
+      <a href="#" class="list-group-item">Subitem 2</a>
+      <a href="#" class="list-group-item">Subitem 3</a>
+    </div>
+
+
+    <a href="#demo4" class="glyphicon glyphicon-tag list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Toxonomy<i class="fa fa-caret-down"></i></a>
+    <div class="collapse" id="demo4">
+      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Family<i class="fa fa-caret-down"></i></a>
+      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Binomial<i class="fa fa-caret-down"></i></a>
+      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Class<i class="fa fa-caret-down"></i></a>
+      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Species<i class="fa fa-caret-down"></i></a>
+      <div class="collapse list-group-submenu" id="SubMenu1">
+        <a href="#" class="list-group-item" data-parent="#SubMenu1">Muricata</a>
+        <a href="#" class="list-group-item" data-parent="#SubMenu1">Podophyllum</a>
+        <a href="#SubSubMenu1" id="2ndSub" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu1"><i class="glyphicon gly
+      .strong { font-weight: bold; }phicon-user"></i> Subitem 3 c <i class="fa fa-caret-down"></i></a>
+          <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
+            <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
+            <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
+          </div>
+          <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
+        </div>
+      <a href="#" class="list-group-item">Common</a>
+      <a href="#" class="list-group-item">Genus</a>
+      <a href="#" class="list-group-item">Kingdom</a>
+      <a href="#" class="list-group-item">Order</a>
+      <a href="#" class="list-group-item">Phylum</a>
+
+      <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu4">
+      <a href="#" class="list-group-item">Species</a>
+      <!-- "muricata"
+      "podophyllum"
+      "muricata"
+      "asclepiascurassavica"
+      "eichhorniacrassipes"
+      "lanceolata"
+      "fuscus" -->
+      <a href="#SubSubMenu4" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu4"><i class="glyphicon glyphicon-thumbs-up"></i>Muricata<i class="fa fa-caret-down"></i></a>
+      <a href="#SubSubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu1"><i class="glyphicon glyphicon-user"></i>podophyllum<i class="fa fa-caret-down"></i></a>
+      </div>
+
+      <a href="#" class="list-group-item">Trinomial</a>
+    </div>
+  </div>
+</div>
+          </div>
+                	{% block content %}
+                	{% endblock %}
+      </div>
+</div>
+
+<script src="{% static "js/jQuery.js" %}" ></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/flipster.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}" ></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -12,11 +12,16 @@
         <!-- Custom Style for this template -->
         <!-- <link rel="stylesheet" href="{% static 'css/blog.css' %}"> -->
         <link rel="stylesheet" href="{% static "css/homepageGridPic.css" %}" alt="gridPic">
+        <link rel="stylesheet" href="{% static "css/sidebar.css" %}" alt="sidebar">
+        <link type="text/javascript" href="{% static "js/jQuery.js" %}">
+        <link type="text/javascript" href="{% static "js/bootstrap.js" %}">
+        <link type="text/javascript" href="{% static "js/flipster.js" %}">
+        <link type="text/javascript" href="{% static "js/bootstrap.min.js" %}">
+
 </head>
 
-<body>
+<!--
 <nav class="navbar navbar-default" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
       <span class="sr-only">Toggle navigation</span>
@@ -27,7 +32,6 @@
     <a class="navbar-brand" href="/">PlantyPictures Project</a>
   </div>
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li class="home"><a href="/">Home</a></li>
@@ -39,35 +43,73 @@
         </ul>
       </li>
     </ul>
-
-<!--
-    <div class="col-sm-3 col-md-3">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search" name="q">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    </div> -->
+      <div class="col-sm-3 col-md-3">
+          <form class="navbar-form" role="search">
+          <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search" name="q">
+              <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+          </div>
+          </form>
+      </div>
 
     <ul class="nav navbar-nav navbar-right">
       <li><a href="#">About</a></li>
       <li><a href="#">Contact Us</a></li>
     </ul>
-  </div><!-- /.navbar-collapse -->
+  </div>
 </nav>
+-->
 
+
+<body>
+  <div class="inner" style="background-image: url({% static "images/planty2.jpg" %}");>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">PlantyPictures Project</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="home"><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery View <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Full Plant List</a></li>
+              <li><a href="#">Other options to come</a></li>
+            </ul>
+          </li>
+        </ul>
+          <!-- <div class="col-sm-3 col-md-3">
+              <form class="navbar-form" role="search">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" name="q">
+                  <div class="input-group-btn">
+                      <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                  </div>
+              </div>
+              </form>
+          </div> -->
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
 <div class="container">
 	{% block content %}
 	{% endblock %}
 </div>
 
-<script src="{% static "js/jQuery.js" %}" ></script>
-<script src="{% static "js/bootstrap.min.js" %}"></script>
-<script src="{% static "js/flipster.js" %}"></script>
-<script src="{% static "js/bootstrap.js" %}" ></script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

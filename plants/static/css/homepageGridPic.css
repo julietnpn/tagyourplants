@@ -3,12 +3,7 @@
   font-family: Lato;
   -webkit-font-smoothing: antialiased;
 }*/
-{%load static from staticfiles %}
-body{
-  background:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/41294/hero.jpg)
-  no-repeat center center fixed;
-  background-size:cover;
-}
+{% load static from staticfiles %}
 
 .search {
   width: 690px;
@@ -23,7 +18,7 @@ body{
 }
 
 .search input {
-  width: 370px;
+  width: 568px;
   height: 35px;
   padding: 1px 5px;
   float: left;
