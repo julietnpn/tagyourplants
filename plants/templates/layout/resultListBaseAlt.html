@@ -13,6 +13,10 @@
         <!-- Custom Style for this template -->
         <link rel="stylesheet" href="{% static "css/listPage.css" %}" alt="listPage">
         <link type="text/javascript" href="{% static "js/accordion.js" %}">
+        <link type="text/javascript" href="{% static "js/jQuery.js" %}">
+        <link type="text/javascript" href="{% static "js/bootstrap.js" %}">
+        <link type="text/javascript" href="{% static "js/flipster.js" %}">
+        <link type="text/javascript" href="{% static "js/bootstrap.min.js" %}">
 </head>
 
 <body>
@@ -63,78 +67,73 @@
       <div class="row">
           <div class="col-md-3">
             <div id="MainMenu">
-  <div class="list-group panel">
+              <div id="MainMenu">
+                <div class="list-group panel">
 
-  <a href="#demo2" class= "glyphicon glyphicon-tag list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Season<i class="fa fa-caret-down"></i></a>
-    <div class="collapse" id="demo2">
-      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Spring<i class="fa fa-caret-down"></i></a>
-      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Summer<i class="fa fa-caret-down"></i></a>
-      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Fall<i class="fa fa-caret-down"></i></a>
-      <a href="#SubMenu" class="list-group-item strong" data-toggle="collapse" data-parent="#demo2">Winter<i class="fa fa-caret-down"></i></a>
-    </div>
+                <form action="/tagResult/" method="GET">
+                  <a href="#season" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Season<i class="fa fa-caret-down"></i></a>
+                  <div class="collapse" id="season">
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="spring"> Spring </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="summer"> Summer </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="fall"> Fall </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="winter"> Winter </label></a>
+                  </div>
 
-    <a href="#demo3" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Taxonomy<i class="fa fa-caret-down"></i></a>
-    <div class="collapse" id="demo3">
-      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#demo3">Species<i class="fa fa-caret-down"></i></a>
-        <div class="collapse list-group-submenu" id="SubMenu1">
-          <a href="#" class="list-group-item" data-parent="#SubMenu1">Muricata</a>
-          <a href="#" class="list-group-item" data-parent="#SubMenu1">Podophyllum</a>
-        </div>
-      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent=""></i>Family<i class="fa fa-caret-down"></i></a>
-        <div class="collapse list-group-submenu" id="SubMenu1">
-          <a href="#" class="list-group-item" data-parent="#SubMenu1">rosaceae</a>
-          <a href="#" class="list-group-item" data-parent="#SubMenu1">malvaceae</a>
-        </div>
-      <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
-      <a href="#" class="list-group-item">Subitem 2</a>
-      <a href="#" class="list-group-item">Subitem 3</a>
-    </div>
+                  <a href="#color" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Color <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse" id="color">
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="white"> white </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="green"> Green</label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="yellow"> Yellow </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="orange"> Orange </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="red"> Red </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="pink"> Pink </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="purple"> Purple </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="golden"> Golden </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="brown"> Brown </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="black"> Black </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="blue"> Blue </label></a>
+                  </div>
 
+                  <a href="#relatedAction" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Related Action <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse" id="relatedAction">
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="gardening"> Gardening </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="landscaping"> Landscaping </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hiking"> Hiking </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hike"> Hike </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="blooming"> Blooming </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="farming"> Farming </label></a>
+                  </div>
 
-    <a href="#demo4" class="glyphicon glyphicon-tag list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Toxonomy<i class="fa fa-caret-down"></i></a>
-    <div class="collapse" id="demo4">
-      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Family<i class="fa fa-caret-down"></i></a>
-      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Binomial<i class="fa fa-caret-down"></i></a>
-      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Class<i class="fa fa-caret-down"></i></a>
-      <a href="#SubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubMenu1">Species<i class="fa fa-caret-down"></i></a>
-      <div class="collapse list-group-submenu" id="SubMenu1">
-        <a href="#" class="list-group-item" data-parent="#SubMenu1">Muricata</a>
-        <a href="#" class="list-group-item" data-parent="#SubMenu1">Podophyllum</a>
-        <a href="#SubSubMenu1" id="2ndSub" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu1"><i class="glyphicon gly
-      .strong { font-weight: bold; }phicon-user"></i> Subitem 3 c <i class="fa fa-caret-down"></i></a>
-          <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu1">
-            <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 1</a>
-            <a href="#" class="list-group-item" data-parent="#SubSubMenu1">Sub sub item 2</a>
-          </div>
-          <a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 4 d</a>
-        </div>
-      <a href="#" class="list-group-item">Common</a>
-      <a href="#" class="list-group-item">Genus</a>
-      <a href="#" class="list-group-item">Kingdom</a>
-      <a href="#" class="list-group-item">Order</a>
-      <a href="#" class="list-group-item">Phylum</a>
+                 <a href="#year" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Year <i class="fa fa-caret-down"></i></a>
+                 <div class="collapse" id="year">
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2016"> 2016 </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2015"> 2015</label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2014"> 2014 </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2013"> 2013</label></a>
+                 </div>
+              </div>
 
-      <div class="collapse list-group-submenu list-group-submenu-1" id="SubSubMenu4">
-      <a href="#" class="list-group-item">Species</a>
-      <!-- "muricata"
-      "podophyllum"
-      "muricata"
-      "asclepiascurassavica"
-      "eichhorniacrassipes"
-      "lanceolata"
-      "fuscus" -->
-      <a href="#SubSubMenu4" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu4"><i class="glyphicon glyphicon-thumbs-up"></i>Muricata<i class="fa fa-caret-down"></i></a>
-      <a href="#SubSubMenu1" class="list-group-item strong" data-toggle="collapse" data-parent="#SubSubMenu1"><i class="glyphicon glyphicon-user"></i>podophyllum<i class="fa fa-caret-down"></i></a>
-      </div>
+                         <!-- <a href="#Taxonomy" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Taxonomy<i class="fa fa-caret-down"></i></a>
+                         <div class="collapse" id="Taxonomy">
+                           <a href="#" class="list-group-item">Family</a>
+                           <a href="#" class="list-group-item">Binomial</a>
+                           <a href="#" class="list-group-item">Class</a>
+                           <a href="#" class="list-group-item">Species</a>
+                           <a href="#" class="list-group-item">Common</a>
+                           <a href="#" class="list-group-item">Genus</a>
+                           <a href="#" class="list-group-item">Kingdom</a>
+                         </div> -->
 
-      <a href="#" class="list-group-item">Trinomial</a>
-    </div>
-  </div>
-</div>
-          </div>
+                 <div class="submit">
+                     <button type="submit">Submit</button>
+                 </div>
+               </form>
+               </div>
+             </div>
+           </div>
                 	{% block content %}
                 	{% endblock %}
-      </div>
+</div>
 </div>
 
 <script src="{% static "js/jQuery.js" %}" ></script>
@@ -145,6 +144,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

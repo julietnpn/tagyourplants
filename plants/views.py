@@ -92,13 +92,19 @@ def get_post_by_tag(request):
     if('tag' in request.GET):
         query = request.GET['tag']
 
+
         tagResult = PlantPost.objects.filter(Q(related_tag__icontains=query))
-        resultList = list()
+        idList = list()
+        eachTagList = set()
 
         for t in tagResult:
-            resultList.append(getattr(t, 'post_id'))
+            eachTagList = eval(getattr(t, 'related_tag'))
+            if query in eachTagList:
+                idList.append(getattr(t, 'post_id'))
 
-        paginator = Paginator(tagResult, 3) # Show 25 contacts per page
+        tagItem = PlantPost.objects.filter(pk__in = idList)
+
+        paginator = Paginator(tagItem, 3) # Show 25 contacts per page
         page = request.GET.get('page')
         try:
             postResult = paginator.page(page)
@@ -113,7 +119,6 @@ def get_post_by_tag(request):
             context={
                 "tagResult": tagResult,
                 "query": query,
-                "resultList": resultList,
                 "postResult": postResult,
                 }
             return TemplateResponse(request, 'plants/tagResult.html', context)

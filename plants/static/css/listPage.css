@@ -39,25 +39,8 @@ div#MainMenu {
   border-bottom-left-radius: 4px
 }
 .list-group-submenu {
-  margin-left:60px;
+  margin-left:20px;
 }
-
-#demo3 {
-  margin-left: 10px;
-}
-
-#SubMenu {
-  margin-left: 10px;
-}
-
-#SubMenu1{
-  margin-left:10px;
-}
-#SubSubMenu1 {
-  margin-left:10px;
-}
-
-
 .strong { font-weight: bold; }
 
 p {
