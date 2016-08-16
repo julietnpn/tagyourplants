@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'background_image', 
+    'background_image',
 ]
 
 MIDDLEWARE_CLASSES = [

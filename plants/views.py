@@ -92,7 +92,6 @@ def get_post_by_tag(request):
     if('tag' in request.GET):
         query = request.GET['tag']
 
-
         tagResult = PlantPost.objects.filter(Q(related_tag__icontains=query))
         idList = list()
         eachTagList = set()
@@ -102,10 +101,11 @@ def get_post_by_tag(request):
             if query in eachTagList:
                 idList.append(getattr(t, 'post_id'))
 
-        tagItem = PlantPost.objects.filter(pk__in = idList)
+        tagItem = PlantPost.objects.filter(pk__in = idList).order_by('post_date', 'post_id')
 
-        paginator = Paginator(tagItem, 3) # Show 25 contacts per page
+        paginator = Paginator(tagItem, 8) # Show 25 contacts per page
         page = request.GET.get('page')
+
         try:
             postResult = paginator.page(page)
         except PageNotAnInteger:

@@ -12,6 +12,9 @@
 
         <!-- Custom Style for this template -->
         <link rel="stylesheet" href="{% static "css/listPage.css" %}" alt="listPage">
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
         <link type="text/javascript" href="{% static "js/accordion.js" %}">
         <link type="text/javascript" href="{% static "js/jQuery.js" %}">
         <link type="text/javascript" href="{% static "js/bootstrap.js" %}">
@@ -23,7 +26,7 @@
 <nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -65,12 +68,50 @@
 
 <div class="container">
       <div class="row">
-          <div class="col-md-3">
+          <div class="col-sm-3" id="navSideBar">
             <div id="MainMenu">
               <div id="MainMenu">
                 <div class="list-group panel">
-
+                  <!-- Tag Filter -->
+                          <form class="navbar-form" role="search">
+                          <div class="input-group">
+                              <input type="text" class="form-control" placeholder="Search" name="tag">
+                              <div class="input-group-btn">
+                                  <button class="btn btn-default" type="submit"> Tag Filter <i class="glyphicon  glyphicons-filter"></i></button>
+                              </div>
+                          </div>
+                          </form>
                 <form action="/tagResult/" method="GET">
+
+                  <div class="submit">
+                      <button type="submit" class="btn btn-outline">Search From Categories </button>
+                  </div>
+
+                  <a href="#lifeform" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Life form<i class="fa fa-caret-down"></i></a>
+                  <div class="collapse" id="lifeform">
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="tree"> Tree </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="grass"> Grass </label></a>
+                    <a href="#colorFlower" class="list-group-item strong glyphicon glyphicon-plus strong" data-toggle="collapse" data-parent="#colorFlower">Flowers<i class="fa fa-caret-down"></i></a>
+                      <div class="collapse list-group-submenu" id="colorFlower">
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="wildflower"> Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="wildflower"> Wild Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="redflower"> Red Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="pinkflower"> Pink Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="orangeflower"> Orange Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="yellowflower"> Yellow Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="purpleflower"> Purple Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="whiteflower"> White Flower </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="blueflower"> Blue Flower </label></a>
+                      </div>
+                      <!-- Have one more level for wildflower, different color's flower -->
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="flora"> Flora </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="herb"> Herb </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="weed"> Weed </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="leaf"> Leaf </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="seed"> Seed </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="botany"> Botany </label></a>
+                  </div>
+
                   <a href="#season" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Season<i class="fa fa-caret-down"></i></a>
                   <div class="collapse" id="season">
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="spring"> Spring </label></a>
@@ -94,57 +135,49 @@
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="blue"> Blue </label></a>
                   </div>
 
+                  <a href="#duration" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Duration <i class="fa fa-caret-down"></i></a>
+                  <div class="collapse" id="duration">
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="annual"> Annual </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="perennial"> Perennial </label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="Biennial"> Biennial </label></a>
+                  </div>
+
                   <a href="#relatedAction" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Related Action <i class="fa fa-caret-down"></i></a>
                   <div class="collapse" id="relatedAction">
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="gardening"> Gardening </label></a>
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="landscaping"> Landscaping </label></a>
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hiking"> Hiking </label></a>
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hike"> Hike </label></a>
-                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="blooming"> Blooming </label></a>
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="farming"> Farming </label></a>
                   </div>
 
                  <a href="#year" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Year <i class="fa fa-caret-down"></i></a>
                  <div class="collapse" id="year">
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2016"> 2016 </label></a>
-                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2015"> 2015</label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2015"> 2015 </label></a>
                     <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2014"> 2014 </label></a>
-                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2013"> 2013</label></a>
+                    <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="2013"> 2013 </label></a>
                  </div>
               </div>
 
-                         <!-- <a href="#Taxonomy" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Taxonomy<i class="fa fa-caret-down"></i></a>
-                         <div class="collapse" id="Taxonomy">
-                           <a href="#" class="list-group-item">Family</a>
-                           <a href="#" class="list-group-item">Binomial</a>
-                           <a href="#" class="list-group-item">Class</a>
-                           <a href="#" class="list-group-item">Species</a>
-                           <a href="#" class="list-group-item">Common</a>
-                           <a href="#" class="list-group-item">Genus</a>
-                           <a href="#" class="list-group-item">Kingdom</a>
-                         </div> -->
+               <a href="#Taxonomy" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Taxonomy<i class="fa fa-caret-down"></i></a>
+               <div class="collapse" id="Taxonomy">
+                 <a href="#" class="list-group-item">Family</a>
+                 <a href="#" class="list-group-item">Binomial</a>
+                 <a href="#" class="list-group-item">Class</a>
+                 <a href="#" class="list-group-item">Species</a>
+                 <a href="#" class="list-group-item">Common</a>
+                 <a href="#" class="list-group-item">Genus</a>
+                 <a href="#" class="list-group-item">Kingdom</a>
+               </div>
 
-                 <div class="submit">
-                     <button type="submit">Submit</button>
-                 </div>
                </form>
                </div>
              </div>
            </div>
-                	{% block content %}
-                	{% endblock %}
-</div>
-</div>
-
-<script src="{% static "js/jQuery.js" %}" ></script>
-<script src="{% static "js/bootstrap.min.js" %}"></script>
-<script src="{% static "js/flipster.js" %}"></script>
-<script src="{% static "js/bootstrap.js" %}" ></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-
-
-</body>
+          {% block content %}
+      	{% endblock %}
+      </div>
+    </div>
+  </body>
 </html>

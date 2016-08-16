@@ -19,11 +19,10 @@
         {% if tag != "" %}
           <button type="button" class="btn btn-info btn-m">
             <!-- <span class = "label label-info"> {{tag}}</span> -->
-            <span class="glyphicon glyphicon-tag">
+            <span class="glyphicon glyphicon-tag" href="tagResult/?tag={{tag}}">
               {{tag}}
             </span>
           </button>
-
         {% endif %}
       {% endfor %}
 			<h3 class="subtitle">User name:</h3>
