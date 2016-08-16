@@ -5,27 +5,37 @@
 }*/
 {% load static from staticfiles %}
 
-h1, h1 {
-    font-size: 36px;
+.h1, h1 {
+    /* font-size: 36px; */
     text-align: center;
-    margin-top: 108px;
-    margin-bottom: -240px;
+    margin-top: -7%;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-size: 50px;
+    font-weight: 600;
+    text-shadow: darkcyan;
+}
+
+div#logo {
+    margin-bottom: -15%;
+    margin-top: 5%;
+    text-align: center;
 }
 
 .search {
-  width: 690px;
-  height: 40px;
-  margin-left: 7px;
-  margin-top: 266px;
-  margin-right: 150px;
-  background: #444;
-  background: rgba(0,0,0,.2);
-  border-radius: 3px;
-  border: 1px solid #fff;
+    width: 1000px;
+    text-align: center;
+    height: 40px;
+    margin-left: -130px;
+    margin-top: 330px;
+    margin-right: 150px;
+    background: #2a51db;
+    background: rgba(0,0,0,.2);
+    border-radius: 3px;
+    border: 1px solid #fff;
 }
 
 .search input {
-  width: 568px;
+  width: 875px;;
   height: 35px;
   padding: 1px 5px;
   float: left;
@@ -47,10 +57,16 @@ h1, h1 {
   cursor: pointer;
   height: 40px;
   width: 120px;
-  color: #fff;
+  color: #333;
   background: transparent;
   border-left: 1px solid #fff;
   border-radius: 0 3px 3px 0;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: initial;
 }
 
 .search button:hover {background: #fff;color:#444;}
@@ -61,6 +77,7 @@ h1, h1 {
 .piclist{
   position: relative;
   margin: 130px auto;
+  margin-top: 100px;
   width: 710px;
   padding: 0;
   list-style: none;
@@ -93,7 +110,7 @@ h1, h1 {
   color: #555;
 }
 
-img {
+.piclist img {
   position: absolute;
   margin: auto;
   top: 0; left: 0; bottom: 0; right: 0;

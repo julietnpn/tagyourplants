@@ -7,36 +7,39 @@
 
 <!-- Carousel -->
 {% for post in singlePost %}
+<h2 id="plantTitle" style="margin-left: -8%;"> {{post.plant.common_name}} | <i>{{post.plant.scientific_name}} </i></h2>
+  <div class='col-md-4' id='plantPic'>
+    <img src= {{post.photo_url}} style="max-height: 500px; max-width: 500px;margin-top:15%;margin-left: -30%;">
+  </div>
 
-  <img src= {{post.photo_url}} style="max-height: 500px; max-width: 500px;"> </li>
-
-	<div class='col-xs-12 col-md-9 pull-md-3 bd-content' id="plantMoreInfo">
-			<h3 class="subtitle">
-				Platform</h3>
+	<div class='.col-md-8' id="plantMoreInfo">
+			<h3><b>Platform</b></h3>
 			<p> {{post.platform}} </p>
       <h3 class="subtitle">Tags in this post:</h3>
       {% for tag in tag_list %}
         {% if tag != "" %}
-          <button type="button" class="btn btn-info btn-m">
+          <!-- <button type="button" class="btn btn-md"> -->
             <!-- <span class = "label label-info"> {{tag}}</span> -->
-            <span class="glyphicon glyphicon-tag" href="tagResult/?tag={{tag}}">
-              {{tag}}
-            </span>
-          </button>
+            <a class="glyphicon glyphicon-tag" href="tagResult/?tag={{tag}}">{{tag}}</a>
         {% endif %}
       {% endfor %}
-			<h3 class="subtitle">User name:</h3>
-			<p> {{post.user_name}} </p>
-			<h3 class="subtitle">Post_ID: </h3>
-			<p> {{post.post_id}} </p>
-			<h3 class="subtitle">Link to original post:</h3>
-			<p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
+			<h3 class="subtitle"> <b>User name:</b></h3>
+        <p>{{post.user_name}} </p>
+			<h3 class="subtitle"><b>Post_ID:</b></h3>
+        <p>{{post.post_id}} </p>
+			<h3 class="subtitle"><b>Link to original post:</b> </h3>
+        <p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
 			<!-- <p> {{post.related_tag}} </p> -->
-			<h3 class="subtitle">
-				Post date & Location: </h3>
-			<p> {{post.post_date}} | @{{post.geo_location}}</p>
-			<h3 class="subtitle">
-				Post Content: </h3>
+			<h3 class="subtitle"><b>Post date</b></h3>
+        <p> {{post.post_date}}</p>
+      <h3 class="subtitle"><b>Location:</b></h3>
+          <p>
+          {% if post.geo_location %}
+            @{{post.geo_location}}</p>
+          {%else%}
+            No Location Data Attached</p>
+          {%endif%}
+			<h3 class="subtitle"> <b>Post Content:</b> </h3>
 			<p class="minimize"> {{ post.content }} </p>
 	</div>
   {% endfor %}

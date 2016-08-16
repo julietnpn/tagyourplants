@@ -15,6 +15,13 @@
   position: relative;;
 }
 
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 21px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
 
 b{
 color: darkgreen;
@@ -22,9 +29,16 @@ color: darkgreen;
 
 
 img {
-    vertical-align: middle;
-    margin-left: 320px;
+    /*vertical-align: middle;*/
+    /*margin-left: 320px;*/
     /* margin-right: 211px; */
+}
+
+/*layout for details*/
+div#plantMoreInfo {
+    margin-left: 45%;
+    margin-top: 5%;
+    width: 80%;
 }
 
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {

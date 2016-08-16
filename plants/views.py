@@ -21,6 +21,8 @@ def result_list(request):
 #        postResult = PlantPost.objects.filter(Q(plant__common_name__icontains=query) | Q(plant__scientific_name__icontains=query)).order_by('-score','plant_id')
         postResult = PlantPost.objects.filter(Q(plant__common_name__iregex=query) | Q(plant__scientific_name__iregex=query)).order_by('-score','post_id')
 
+        # if postResult == :
+        #
         topResult_set = list()
         topPlant_set = set()
         for top in postResult:

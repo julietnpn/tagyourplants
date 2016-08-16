@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}  Planty Pictures {% endblock %}</title>
+        <title>{% block title %}  Planty Social Site {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -63,9 +63,9 @@
 -->
 
 
-<body>
-  <div class="inner" style="background-image: url({% static "images/planty2.jpg" %}");>
-    <nav class="navbar navbar-default" role="navigation">
+<body background="{% static "images/planty2.jpg" %}" >
+  <!-- <div class="inner" style="background-image: url({% static "images/planty2.jpg" %}");> -->
+    <!-- <nav class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
           <span class="sr-only">Toggle navigation</span>
@@ -74,6 +74,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">PlantyPictures Project</a>
+        <a img src="{% static "images/logo1.png" %}" class="app_icon_on_top"></a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -93,12 +94,14 @@
           <li><a href="#">Contact Us</a></li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- title -->
     <div class="glyphicons-flower" id="logo">
-      <h1> Planty Pictures</h1>
-    </div> 
+      <img src="{% static "images/logo1.png" %}" class="app_icon">
+      <h1> #TagYourPlants </h1>
+      <!-- <h1> Planty Pictures</h1> -->
+    </div>
 
 <div class="container">
 	{% block content %}
