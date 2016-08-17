@@ -8,11 +8,11 @@
 .h1, h1 {
     /* font-size: 36px; */
     text-align: center;
-    margin-top: -7%;
+    margin-top: -17%;
     font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
     font-size: 50px;
     font-weight: 600;
-    text-shadow: darkcyan;
+    color: #333;
 }
 
 div#logo {
@@ -21,19 +21,27 @@ div#logo {
     text-align: center;
 }
 
+.row{
+    margin-right: -15px;
+/* margin-left: 0px; */
+    margin-top: 5%;
+}
+
 .search {
-    width: 1000px;
+    /* width: 1000px; */
     text-align: center;
+    text-align: center;
+    font-weight: 900;
+    font-size: 20px;
+    font-size: x-large;
     height: 40px;
-    margin-left: -130px;
-    margin-top: 330px;
-    margin-right: 150px;
-    background: #2a51db;
+    margin-top: 234px;
+    /* margin-right: 150px; */
+    /* background: #192039; */
     background: rgba(0,0,0,.2);
     border-radius: 3px;
     border: 1px solid #fff;
 }
-
 .search input {
   width: 875px;;
   height: 35px;
@@ -74,6 +82,22 @@ button, input, select, textarea {
 
 .search button:focus {outline: 0;}
 
+
+#logo{
+  position: relative;
+  margin: 25px auto;
+  width: 710px;
+  length: 1010px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 50px;
+  color: #555;
+}
+
+/*
 .piclist{
   position: relative;
   margin: 130px auto;
@@ -96,20 +120,6 @@ button, input, select, textarea {
   float: left;
 }
 
-.container{
-  position: relative;
-  margin: 25px auto;
-  width: 710px;
-  length: 1010px;
-  padding: 0;
-  list-style: none;
-  text-align: center;
-  font-weight: 900;
-  font-size: 20px;
-  line-height: 50px;
-  color: #555;
-}
-
 .piclist img {
   position: absolute;
   margin: auto;
@@ -118,4 +128,4 @@ button, input, select, textarea {
   height: 100%;
   border-radius: 1px;
   box-shadow: 0 0 0 4px #fff;
-}
+}*/

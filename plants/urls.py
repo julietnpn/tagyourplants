@@ -6,4 +6,4 @@ urlpatterns = patterns('',
     url(r'^tagResult/$', 'plants.views.get_post_by_tag', name='tagResults'),
     url(r'^singlePost/$', 'plants.views.get_singlepost_by_post_id', name='singlepost'),
     url(r'^gallery/$', 'plants.views.gallary_for_each_plant', name='postResults'),
-       )
+           )
