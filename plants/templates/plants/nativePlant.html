@@ -3,30 +3,11 @@
 {% block title %}PlantyPictures Search Result{% endblock %}
 
 {% block content %}
-	<!-- <div class="col-md-9 bd-content">
-	<h1 class="bd-title" id="content">Search Results</h1>
-	{% for r in coverItem %}
-	<div class ="row">
-			<div class ="col-sm-12">
-				<div class="thumbnail">
-					<img id="thumbnailCover" src= {{r.photo_url}} style="max-height: 200px; max-width: 200px; float:left" class="img-rounded">
-					<div class="caption">
-						<h2>{{r.plant.common_name}} | <i>{{r.plant.scientific_name}}</i></h3>
-						{% if r.plant.ca_native == "FALSE" %}
-						 	  <p>California Native Plant</p>
-						{% else %}
-								<p>Non-Native Plant</p>
-						{% endif %}
-						<p><a href="/plants/plantResults?q={{r.plant.plant_id}} " class="btn btn-primary" role="button">View</a></p>
-					</div>
-				</div>
-			</div>
-	</div>
-	{% endfor %} -->
 
+  <h2> Total Native Plants: {{count}} </h2>
 
 	<div class="thumbnailrow">
-		{% for r in coverItem %}
+		{% for r in postResult %}
     <div class="col-md-6 col-md-3">
         <div class="thumbnail">
             <img data-src="holder.js/300x200" alt="300x200" style="width: 300px; height: 200px;" src= {{r.photo_url}}>
@@ -45,5 +26,20 @@
         </div>
     </div>
 		{% endfor %}
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if postResult.has_previous %}
+          <a href="?tag={{query}}&&page={{ postResult.previous_page_number }}">previous</a>
+        {% endif %}
+      <span class="current">
+          Page {{ postResult.number }} of {{ postResult.paginator.num_pages }}.
+      </span>
+      {% if postResult.has_next %}
+          <a href="?tag={{query}}&&page={{ postResult.next_page_number }}">next</a>
+      {% endif %}
+      </span>
+    </div>
+    
 </div>
 {% endblock %}

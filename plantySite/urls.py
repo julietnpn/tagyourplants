@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^plants/', include('plants.urls')),
     url(r'^searchResults/', 'plants.views.result_list'),
     url(r'^tagResult/', 'plants.views.get_post_by_tag'),
+    url(r'^nativePlant/', 'plants.views.get_native_plant', name='nativePlant'),
 
 ]
 

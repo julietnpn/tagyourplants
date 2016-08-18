@@ -15,6 +15,55 @@ def homepage(request):
 def search_form(request):
     return render(request, 'plantResults.html')
 
+
+def get_native_plant(request):
+    nativePlant = Plant.objects.filter(Q(ca_native="TRUE")).order_by('common_name','plant_id')
+
+    topResult_set = list()
+    topPlant_set = set()
+    if nativePlant:
+        for top in nativePlant:
+            if (getattr(top, 'plant_id')) in topPlant_set:
+                continue
+            else:
+                topPlant_set.add(getattr(top, 'plant_id'))
+        #get the each plant_id
+        for plant in topPlant_set:
+            if plant:
+                topPlant = PlantPost.objects.filter(Q(plant__plant_id__icontains=plant))
+                #.order_by('-score', 'post_id')
+                r = list(topPlant[:1])
+                if r:
+                    top_post = r[0]
+                    topResult_set.append(getattr(top_post, 'post_id'))
+                else:
+                    top_post = None
+
+        coverItem = PlantPost.objects.filter(pk__in = topResult_set)
+        count = len(coverItem)
+
+        paginator = Paginator(coverItem, 8) # Show 25 contacts per page
+        page = request.GET.get('page')
+
+        try:
+            postResult = paginator.page(page)
+        except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+            postResult = paginator.page(1)
+        except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+            postResult = paginator.page(paginator.num_pages)
+        context = {
+            'nativePlant': nativePlant,
+            'coverItem': coverItem,
+            'count': count,
+            'postResult': postResult,
+            }
+        return TemplateResponse(request,'plants/nativePlant.html', context)
+    else:
+        return HttpResponseNotFound
+
+
 def result_list(request):
     if('q' in request.GET):
         query = request.GET['q']
@@ -44,14 +93,8 @@ def result_list(request):
             coverItem = PlantPost.objects.filter(pk__in = topResult_set)
 
             context = {
-                'topPlant_set': topPlant_set,
-                'query': query,
-                'postResult': postResult,
-                'top_post': top_post,
-                'topResult_set': topResult_set,
                 'coverItem': coverItem,
-                'r': r,
-                }
+                    }
             return TemplateResponse(request,'plants/resultList.html', context)
         else:
             return HttpResponseNotFound
