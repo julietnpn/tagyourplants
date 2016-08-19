@@ -1,43 +1,12 @@
 {% extends 'layout/base.html' %}
 {% load static from staticfiles %}
+{% load tagList %}
 {% block title %}Welcome to #TagYourPlants{% endblock %}
 {% block content %}
   <!-- <img src="{% static "images/planty_launcher.png" %}" class="app_icon"> -->
 
 
 <body background="{% static "images/planty2.jpg" %}">
-    <!-- <div class="inner" style="background-image: url({% static "images/planty2.jpg" %}");> -->
-      <!-- <nav class="navbar navbar-default" role="navigation">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">PlantyPictures Project</a>
-          <a img src="{% static "images/logo1.png" %}" class="app_icon_on_top"></a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="home"><a href="/">Home</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery View <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Full Plant List</a></li>
-                <li><a href="#">Other options to come</a></li>
-              </ul>
-            </li>
-            <li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact Us</a></li>
-          </ul>
-        </div>
-      </nav> -->
-
       <!-- title -->
 <div id="logo">
     <img src="{% static "images/logo1.png" %}" class="app_icon">
@@ -46,57 +15,53 @@
 </div>
 
 <form class="search" action="/searchResults/" method="GET" id="searchbox">
-  <input type="text" name ="q" placeholder="Search here..." required>
+  <input type="text" name ="q" placeholder="Search plant here..." required>
   <button type="submit">Search</button>
 </form>
 
-<div class="row" id="gridPic">
-    <h2>Most Popular Plants: </h2>
-    	<img src="https://farm1.staticflickr.com/673/21155064125_eb514efd2f.jpg" alt="..." class="img-rounded">
+<!--
+<div class="row" id="gridPic"> -->
+    	<!-- <img src="https://farm1.staticflickr.com/673/21155064125_eb514efd2f.jpg" alt="..." class="img-rounded">
       <img src="https://farm2.staticflickr.com/1594/26051537276_8aa5924133.jpg" alt="..." class="img-rounded">
       <img src="https://farm6.staticflickr.com/5448/17733830039_645930ffa8.jpg" alt="..." class="img-rounded">
       <img src="http://pbs.twimg.com/media/CnZ-sqxWIAEZUaG.jpg" alt="..." class="img-rounded">
       <img src="https://farm1.staticflickr.com/361/19633606362_fe9f79f1f1.jpg" alt="..." class="img-rounded">
       <img src="https://farm9.staticflickr.com/8611/27771000343_c88c8961a7.jpg" alt="..." class="img-rounded">
-</div>
-    <!--
-      <div class="col-md-6 col-md-offset-3">
-      <div class="carousel slide" id="myCarousel">
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="col-xs-3"><a href="#"><img src="http://pbs.twimg.com/media/CnG10f9XgAE_ovO.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="https://farm2.staticflickr.com/1594/26051537276_8aa5924133.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="http://pbs.twimg.com/media/CnaSk45WcAA5qQV.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="https://farm2.staticflickr.com/1638/25742417102_85ac7b71ec.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="http://pbs.twimg.com/media/CnVCDzvW8AAK3Ol.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="https://farm9.staticflickr.com/8862/27747562143_85b2a2d4f5.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="http://pbs.twimg.com/media/CnFc6aUXYAIheWK.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="https://farm8.staticflickr.com/7369/26317482134_2c48fc75aa.jpg" class="img-responsive"></a></div>
-          </div>
-          <div class="item">
-            <div class="col-xs-3"><a href="#"><img src="https://farm8.staticflickr.com/7369/26317482134_2c48fc75aa.jpg" class="img-responsive"></a></div>
-          </div>
+</div> -->
+    <div class="col-md-12 text-center"><h3>Most Popular TaggedPlants:</h3></div>
+    <div class="col-md-6 col-md-offset-3">
+    <div class="carousel slide" id="myCarousel">
 
+      <div class="carousel-inner">
+        <div class="item active">
+          <div class="col-xs-3"><a href="#{{first.post_url}}"><img src="{{first.photo_url}};text=1" class="img-responsive"></a></div>
         </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+        <!-- <div class="item">
+          <div class="col-xs-3"><a href="{{grid.1.post_link}}"><img src="{{grid.1.photo_url}};text={{grid.1.post_id}}" class="img-responsive"></a></div>
+        </div>
+        <div class="item">
+          <div class="col-xs-3"><a href="#"><img src="http://placehold.it/500/eeeeee&amp;text=3" class="img-responsive"></a></div>
+        </div>
+        <div class="item">
+          <div class="col-xs-3"><a href="#"><img src="http://placehold.it/500/f4f4f4&amp;text=4" class="img-responsive"></a></div>
+        </div>
+        <div class="item">
+          <div class="col-xs-3"><a href="#"><img src="http://placehold.it/500/f566f5/333&amp;text=5" class="img-responsive"></a></div>
+        </div> -->
+        <div class="item">
+          <div class="col-xs-3"><a href="#{{second.post_url}}"><img src="{{second.photo_url}};text=1" class="img-responsive"></a></div>
+        </div>
+        <div class="item">
+          <div class="col-xs-3"><a href="#{{third.post_url}}"><img src="{{third.photo_url}};text=1" class="img-responsive"></a></div>
+        </div>
+        <div class="item">
+          <div class="col-xs-3"><a href="#{{fourth.post_url}}"><img src="{{fourth.photo_url}};text=1" class="img-responsive"></a></div>
+        </div>
       </div>
-      </div> -->
-</div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+    </div>
+    </div>
 
 
 <!-- <ul class="piclist">

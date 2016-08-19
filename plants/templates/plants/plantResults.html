@@ -1,11 +1,12 @@
 {% extends 'layout/plantResultBase.html' %}
+{% load tagList %}
 
 {% block title %}PlantyPictures Search Result{% endblock %}
 
 <div class='col-sm-8 col-sm-offset-12' id="plantTitle">
 {% block content %}
 
-<h2><span>Plant Gallery for <b>{{firstPost.plant.common_name}} | <i>{{firstPost.plant.scientific_name}}</i></b><span></h2>
+<h2><span>Plant Gallery Of <b>{{firstPost.plant.common_name}} | <i>{{firstPost.plant.scientific_name}}</i></b><span></h2>
 
   <div id="myCarousel" class="carousel slide">
     <!-- Carousel items -->
@@ -15,21 +16,36 @@
             <img src={{firstPost.photo_url}} />
             <div class="carousel-caption">
             <h3 class="subtitle">
-              Platform</h3>
-            <p> {{firstPost.platform}} </p>
+              <b>Platform: </b>  {{firstPost.platform}} </h3>
             <h3 class="subtitle">
-              Link to original post:</h3>
-            <p><a href="{{firstPost.post_link}}" target="_top"> {{firstPost.post_link}}</a></p>
+              <b>Tags: </b>
+              {% if firstPost.related_tag %}
+                {% for tag in firstPost.related_tag|tagSet %}
+                  {% if tag != "" %}
+                    <a class="glyphicon glyphicon-tag" href="/plants/tagResult/?tag={{tag}}">{{tag}}</a>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                No tag for this post
+              {% endif %}
+            </h3>
             <h3 class="subtitle">
-              Tags: </h3>
-            <p> {{firstPost.related_tag}} </p>
+              <b>Post date: </b>  {{firstPost.post_date}} </h3>
             <h3 class="subtitle">
-              Post date & Location: </h3>
-            <p> {{firstPost.post_date}} | @{{firstPost.geo_location}}</p>
+              <b>Geo Location: </b>
+                  {% if firstPost.geo_location %}
+                    @{{firstPost.geo_location}}</h3>
+                  {%else%}
+                    No Location Data Attached</h3>
+                  {%endif%}
             <h3 class="subtitle">
-              Post Content: </h3>
+              <b>Post Content: </b>
             <p class="minimize"> {{ firstPost.content }} </p>
-            <p><a class="btn btn-large btn-primary" href="/plants/singlePost/?postID={{firstPost.post_id}} ">Learn more</a></p>
+            </h3>
+            <p class="linkButton">
+              <a class="btn btn-large btn-primary" id="learnMore" href="/plants/singlePost/?postID={{firstPost.post_id}} ">Learn more</a>
+              <a class="btn btn-large btn-primary" id="linkOriginal" href= {{firstPost.post_link}}> Link to Original Post</a>
+            </p>
           </div>
           </div>
 
@@ -38,22 +54,37 @@
             <img src={{post.photo_url}} />
             <div class="carousel-caption">
             <h3 class="subtitle">
-              Platform</h3>
-            <p> {{post.platform}} </p>
+              <b>Platform: </b>  {{post.platform}} </h3>
             <h3 class="subtitle">
-              Link to original post:</h3>
-            <p><a href="{{post.post_link}}" target="_top"> {{post.post_link}}</a></p>
+              <b>Tags: </b>
+              {% if post.related_tag %}
+                {% for tag in post.related_tag|tagSet %}
+                  {% if tag != "" %}
+                    <a class="glyphicon glyphicon-tag" href="/plants/tagResult/?tag={{tag}}">{{tag}}</a>
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                No tag for this post
+              {% endif %}
+              </h3>
             <h3 class="subtitle">
-              Tags: </h3>
-            <p> {{post.related_tag}} </p>
+              <b>Post date: </b>  {{post.post_date}} </h3>
             <h3 class="subtitle">
-              Post date & Location: </h3>
-            <p> {{post.post_date}} | @{{post.geo_location}}</p>
+              <b>Geo Location: </b>
+                  {% if post.geo_location %}
+                    {{post.geo_location}}</h3>
+                  {%else%}
+                    No Location Data Attached</h3>
+                  {%endif%}
             <h3 class="subtitle">
-              Post Content: </h3>
+              <b>Post Content: </b>
             <p class="minimize"> {{ post.content }} </p>
-            <p><a class="btn btn-large btn-primary" href="/plants/singlePost/?postID={{post.post_id}} ">Learn more</a></p>
-        </div>
+            </h3>
+            <p class="linkButton">
+              <a class="btn btn-large btn-primary" id="learnMore" href="/plants/singlePost/?postID={{firstPost.post_id}} ">Learn more</a>
+              <a class="btn btn-large btn-primary" id="linkOriginal" href= {{firstPost.post_link}}> Link to Original Post</a>
+            </p>
+          </div>
       </div>
       {% endfor %}
     </div>

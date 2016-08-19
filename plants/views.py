@@ -10,7 +10,20 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def homepage(request):
-    return TemplateResponse(request, 'plants/index.html')
+    ordered_grid = PlantPost.objects.order_by('-score', 'post_date')[:10]
+    first = ordered_grid[0]
+    second = ordered_grid[3]
+    third = ordered_grid[6]
+    fourth = ordered_grid[8]
+    context = {
+        'ordered_grid': ordered_grid,
+        'first': first,
+        'second': second,
+        'third': third,
+        'fourth': fourth,
+    }
+
+    return TemplateResponse(request, 'plants/index.html', context)
 
 def search_form(request):
     return render(request, 'plantResults.html')
@@ -126,7 +139,6 @@ def get_plant(request):
         }
     return TemplateResponse(request, 'plants/plantResults.html', context)
 
-
 def get_post_by_tag(request):
     if('tag' in request.GET):
         query = request.GET['tag']
@@ -144,7 +156,6 @@ def get_post_by_tag(request):
 
         paginator = Paginator(tagItem, 8) # Show 25 contacts per page
         page = request.GET.get('page')
-
         try:
             postResult = paginator.page(page)
         except PageNotAnInteger:
@@ -154,7 +165,7 @@ def get_post_by_tag(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
             postResult = paginator.page(paginator.num_pages)
 
-        if tagResult:
+        if tagItem:
             context={
                 "tagResult": tagResult,
                 "query": query,
@@ -182,22 +193,9 @@ def get_singlepost_by_post_id(request):
         return TemplateResponse(request, 'plants/singlePost.html', context)
     else:
         return HttpResponseNotFound
+        ordered_grid = PlantPost.objects.order_by('-score', 'post_date')[:10]
+        context = {
+            'ordered_grid': ordered_grid,
+        }
 
-def gallary_for_each_plant(request):
-    if('tag' in request.GET):
-        query = request.GET['tag']
-    plantPosts = PlantPost.objects.filter(Q(related_tag__iregex=query))
-
-
-    firstPost, restPosts = plantPosts[0], plantPosts[1:]
-
-    if plantPosts:
-        context={
-                "plantPosts": plantPosts,
-                "firstPost": firstPost,
-                "restPosts": restPosts,
-                "query": query,
-                }
-        return TemplateResponse(request, 'plants/gallery.html', context)
-    else:
-        return HttpResponseNotFound
+        return TemplateResponse(request, 'plants/index.html', context)
