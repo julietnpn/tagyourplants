@@ -13,7 +13,8 @@
   </div>
 
   <div class='col-sm-4' id='votingBtn'>
-    <p> Found this post helpful?
+    <p> Found this post helpful?    </p>
+    <p>
     <form class="search" action="/upvote/{{post.post_id}}" method="GET" id="votebtn">
       <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up" data-loading-text=" ... "> {{post.score}}</button>
     </form>
@@ -21,9 +22,11 @@
     <form class="search" action="/downvote/{{post.post_id}}" method="GET" id="votebtn">
       <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... "> {{post.score}}</button>
     </form>
+    </p>
   </div>
   <!-- <a href="/upvote/{{post.post_id}}">UP</a> -->
-    </p>
+
+
 
   <div class='.col-md-8' id="plantMoreInfo">
 			<h3><b>Platform</b></h3>

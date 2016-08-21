@@ -25,7 +25,8 @@ urlpatterns = [
     url(r'^searchResults/', 'plants.views.result_list'),
     url(r'^tagResult/', 'plants.views.get_post_by_tag'),
     url(r'^nativePlant/', 'plants.views.get_native_plant', name='nativePlant'),
-
+    url(r'^upvote/(?P<post_id>\w+)/$', 'plants.views.upVotes', name='vote'),
+    url(r'^downvote/(?P<post_id>\w+)/$', 'plants.views.downVotes', name='vote'),
 ]
 
 if settings.DEBUG:

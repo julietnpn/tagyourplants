@@ -67,12 +67,13 @@ body,html{
       color: #777;
     }
 
-    nav.sidebar{
-      width: 200px;
-      height: 100%;
-      margin-left: -160px;
-      float: left;
-      margin-bottom: 0px;
+    nav.sidebar {
+        width: 200px;
+        height: 206px;
+        margin-top: 10%;
+        margin-left: -160px;
+        float: left;
+        margin-bottom: 0px;
     }
 
     nav.sidebar li {

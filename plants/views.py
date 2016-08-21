@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from plants.models import Plant, PlantPost, TaxonomyPost
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.shortcuts import get_object_or_404
+from django.contrib import messages
 from django.template.response import TemplateResponse
 from django.http import HttpResponse, HttpResponseNotFound
 from .forms import SearchForm
@@ -10,11 +11,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def homepage(request):
-    ordered_grid = PlantPost.objects.order_by('-score', 'post_date')[:10]
-    first = ordered_grid[0]
-    second = ordered_grid[3]
-    third = ordered_grid[6]
-    fourth = ordered_grid[8]
+    ordered_grid = PlantPost.objects.order_by('-score', '-post_date')[:30]
+    first = ordered_grid[3]
+    second = ordered_grid[5]
+    third = ordered_grid[8]
+    fourth = ordered_grid[11]
     context = {
         'ordered_grid': ordered_grid,
         'first': first,
@@ -31,7 +32,6 @@ def search_form(request):
 
 def get_native_plant(request):
     nativePlant = Plant.objects.filter(Q(ca_native="TRUE")).order_by('common_name','plant_id')
-
     topResult_set = list()
     topPlant_set = set()
     if nativePlant:
@@ -76,12 +76,10 @@ def get_native_plant(request):
     else:
         return HttpResponseNotFound
 
-
 def result_list(request):
     if('q' in request.GET):
         query = request.GET['q']
-#        postResult = PlantPost.objects.filter(Q(plant__common_name__icontains=query) | Q(plant__scientific_name__icontains=query)).order_by('-score','plant_id')
-        postResult = PlantPost.objects.filter(Q(plant__common_name__iregex=query) | Q(plant__scientific_name__iregex=query)).order_by('-score','post_id')
+        postResult = PlantPost.objects.filter(Q(plant__common_name__iregex=query) | Q(plant__scientific_name__iregex=query)).order_by('-post_date','post_id')
 
         topResult_set = list()
         topPlant_set = set()
@@ -95,6 +93,7 @@ def result_list(request):
             for plant in topPlant_set:
                 if plant:
                     topPlant = PlantPost.objects.filter(Q(plant__plant_id__icontains=plant))
+                    #, 'post_id', 'post_date')
                     #.order_by('-score', 'post_id')
                     r = list(topPlant[:1])
                     if r:
@@ -103,7 +102,7 @@ def result_list(request):
                     else:
                         top_post = None
 
-            coverItem = PlantPost.objects.filter(pk__in = topResult_set)
+            coverItem = PlantPost.objects.filter(pk__in = topResult_set).order_by('-score')
 
             context = {
                 'coverItem': coverItem,
@@ -187,15 +186,59 @@ def get_singlepost_by_post_id(request):
     if singlePost:
         context={
         "singlePost": singlePost,
-        "query": query,
         "tag_list": tag_list,
                 }
-        return TemplateResponse(request, 'plants/singlePost.html', context)
-    else:
-        return HttpResponseNotFound
-        ordered_grid = PlantPost.objects.order_by('-score', 'post_date')[:10]
-        context = {
-            'ordered_grid': ordered_grid,
-        }
 
-        return TemplateResponse(request, 'plants/index.html', context)
+    return TemplateResponse(request, 'plants/singlePost.html', context)
+
+
+def upVotes(request,post_id):
+
+    singlePost = PlantPost.objects.filter(Q(post_id__exact=post_id))
+
+    tag_list = set()
+    for plant in singlePost:
+        tag_list = eval(getattr(plant, 'related_tag'))
+
+    if singlePost:
+        context={
+        "singlePost": singlePost,
+        "tag_list": tag_list,
+                }
+
+
+    post = PlantPost.objects.get(pk=post_id)
+    post.score += 1
+    post.save()
+
+    messages.success(request, 'Thanks for your feedback! ')
+
+    return TemplateResponse(request, 'plants/voteCompleteNote.html', context)
+
+def downVotes(request,post_id):
+
+    singlePost = PlantPost.objects.filter(Q(post_id__exact=post_id))
+
+    tag_list = set()
+    for plant in singlePost:
+        tag_list = eval(getattr(plant, 'related_tag'))
+
+    if singlePost:
+        context={
+        "singlePost": singlePost,
+        "tag_list": tag_list,
+                }
+    #
+    # if('vote' in request.GET):
+    #     query = request.GET['vote']
+    #     if(query == 'YES'):
+    #         PlantPost.objects.filter(post_id__in=query).update(score=F('score') + 1)
+
+
+    post = PlantPost.objects.get(pk=post_id)
+    post.score -= 1
+    post.save()
+
+    messages.success(request, 'Thanks for your feedback! ')
+
+    return TemplateResponse(request, 'plants/voteCompleteNote.html', context)

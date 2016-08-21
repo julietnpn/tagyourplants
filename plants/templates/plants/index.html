@@ -11,7 +11,6 @@
 <div id="logo">
     <img src="{% static "images/logo1.png" %}" class="app_icon">
     <h1> #TagYourPlants </h1>
-        <!-- <h1> Planty Pictures</h1> -->
 </div>
 
 <form class="search" action="/searchResults/" method="GET" id="searchbox">
@@ -19,43 +18,22 @@
   <button type="submit">Search</button>
 </form>
 
-<!--
-<div class="row" id="gridPic"> -->
-    	<!-- <img src="https://farm1.staticflickr.com/673/21155064125_eb514efd2f.jpg" alt="..." class="img-rounded">
-      <img src="https://farm2.staticflickr.com/1594/26051537276_8aa5924133.jpg" alt="..." class="img-rounded">
-      <img src="https://farm6.staticflickr.com/5448/17733830039_645930ffa8.jpg" alt="..." class="img-rounded">
-      <img src="http://pbs.twimg.com/media/CnZ-sqxWIAEZUaG.jpg" alt="..." class="img-rounded">
-      <img src="https://farm1.staticflickr.com/361/19633606362_fe9f79f1f1.jpg" alt="..." class="img-rounded">
-      <img src="https://farm9.staticflickr.com/8611/27771000343_c88c8961a7.jpg" alt="..." class="img-rounded">
-</div> -->
-    <div class="col-md-12 text-center"><h3>Most Popular TaggedPlants:</h3></div>
+    <div class="col-md-12 text-center"><h3>Most Popular Tagged Plants:</h3></div>
     <div class="col-md-6 col-md-offset-3">
     <div class="carousel slide" id="myCarousel">
 
       <div class="carousel-inner">
         <div class="item active">
-          <div class="col-xs-3"><a href="#{{first.post_url}}"><img src="{{first.photo_url}};text=1" class="img-responsive"></a></div>
-        </div>
-        <!-- <div class="item">
-          <div class="col-xs-3"><a href="{{grid.1.post_link}}"><img src="{{grid.1.photo_url}};text={{grid.1.post_id}}" class="img-responsive"></a></div>
+          <div class="col-xs-3"><a href="/plants/singlePost/?postID={{first.post_id}}"> {{first.plant.common_name}} <img src="{{first.photo_url}};" class="img-responsive"></a></div>
         </div>
         <div class="item">
-          <div class="col-xs-3"><a href="#"><img src="http://placehold.it/500/eeeeee&amp;text=3" class="img-responsive"></a></div>
+          <div class="col-xs-3"><a href="/plants/singlePost/?postID={{second.post_id}}" >{{second.plant.common_name}} <img src="{{second.photo_url}};" class="img-responsive"></a></div>
         </div>
         <div class="item">
-          <div class="col-xs-3"><a href="#"><img src="http://placehold.it/500/f4f4f4&amp;text=4" class="img-responsive"></a></div>
+          <div class="col-xs-3"><a href="/plants/singlePost/?postID={{third.post_id}}"> {{third.plant.common_name}} <img src="{{third.photo_url}};" class="img-responsive"></a></div>
         </div>
         <div class="item">
-          <div class="col-xs-3"><a href="#"><img src="http://placehold.it/500/f566f5/333&amp;text=5" class="img-responsive"></a></div>
-        </div> -->
-        <div class="item">
-          <div class="col-xs-3"><a href="#{{second.post_url}}"><img src="{{second.photo_url}};text=1" class="img-responsive"></a></div>
-        </div>
-        <div class="item">
-          <div class="col-xs-3"><a href="#{{third.post_url}}"><img src="{{third.photo_url}};text=1" class="img-responsive"></a></div>
-        </div>
-        <div class="item">
-          <div class="col-xs-3"><a href="#{{fourth.post_url}}"><img src="{{fourth.photo_url}};text=1" class="img-responsive"></a></div>
+          <div class="col-xs-3"><a href="/plants/singlePost/?postID={{fourth.post_id}}"> {{fourth.plant.common_name}} <img src="{{fourth.photo_url}};" class="img-responsive"></a></div>
         </div>
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
@@ -63,15 +41,4 @@
     </div>
     </div>
 
-
-<!-- <ul class="piclist">
-  <li><img src="http://pbs.twimg.com/media/CnG10f9XgAE_ovO.jpg" /></li>
-  <li><img src="http://pbs.twimg.com/media/CnaSk45WcAA5qQV.jpg" /></li>
-  <li><img src="http://pbs.twimg.com/media/CnVCDzvW8AAK3Ol.jpg" /></li>
-  <li><img src="http://pbs.twimg.com/media/CnFc6aUXYAIheWK.jpg" /></li>
-  <li><img src="https://farm2.staticflickr.com/1594/26051537276_8aa5924133.jpg" /></li>
-  <li><img src="https://farm2.staticflickr.com/1638/25742417102_85ac7b71ec.jpg" /></li>
-  <li><img src="https://farm9.staticflickr.com/8862/27747562143_85b2a2d4f5.jpg" /></li>
-  <li><img src="https://farm8.staticflickr.com/7369/26317482134_2c48fc75aa.jpg" /></li>
-</ul> -->
 {% endblock %}

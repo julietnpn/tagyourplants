@@ -50,3 +50,17 @@ class TaxonomyPost(models.Model):
 
     def __unicode__(self):
          return '%s' % (self.post_id)
+#
+# _SCORE_TYPE_CHOICES = (
+#     (-1, 'DISLIKE'),
+#     (1, 'LIKE'),
+# )
+#
+# SCORE_TYPES = dict((value, key) for key, value in _SCORE_TYPE_CHOICES)
+#
+# class votingPost(models.Model):
+#     post = model.ForeignKey('PlantPost')
+#     rating = RatingField(can_change_vote=True)
+#
+#     def __str__(self):
+#         return '%s %s' % (self.plant.common_name, self.rating)
