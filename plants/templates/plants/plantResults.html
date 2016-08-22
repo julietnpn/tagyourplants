@@ -51,7 +51,10 @@
 
           {% for post in restPosts %}
           <div class="item">
-            <img src={{post.photo_url}} />
+            <a href={{post.photo_url}}>
+              <img src={{post.photo_url}} >
+            </a>
+            
             <div class="carousel-caption">
             <h3 class="subtitle">
               <b>Platform: </b>  {{post.platform}} </h3>

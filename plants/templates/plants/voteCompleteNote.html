@@ -5,31 +5,29 @@
 <!-- <div class='col-sm-8 col-sm-offset-12' id="plantTitle"> -->
 {% block content %}
 
+<div class="alert alert-success" style="text-align:center">
+  <strong>Thank you for your feedback!</strong>
+</div>
+
 <!-- Carousel -->
 {% for post in singlePost %}
 <h2 id="plantTitle" style="margin-left: -8%;"> {{post.plant.common_name}} | <i>{{post.plant.scientific_name}} </i></h2>
   <div class='col-md-4' id='plantPic'>
-    <img href= {{post.photo_url}} src= {{post.photo_url}} style="max-height: 500px; max-width: 500px;margin-top:15%;margin-left: -30%;">
+    <a href="/plants/singlePost/?postID={{post.post_id}}">
+      <img href= {{post.photo_url}} src= {{post.photo_url}} style="max-height: 500px; max-width: 500px;margin-top:15%;margin-left: -30%;">
+    </a>
   </div>
+<!--
+    <div class='col-sm-4' id='votingBtn'>
+          <div class='alert alert-success'>
+                {% for message in messages %}
+                    {{message}}
+          </div>
+      {% endfor %}
+    </div> -->
 
-  <div class='col-sm-4' id='votingBtn'>
-    <p> Found this post helpful?    </p>
-    <p>
-    <form class="search" action="/upvote/{{post.post_id}}" method="GET" id="votebtn">
-      <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up" data-loading-text=" ... "> {{post.score}}</button>
-    </form>
-
-    <form class="search" action="/downvote/{{post.post_id}}" method="GET" id="votebtn">
-      <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... "> {{post.score}}</button>
-    </form>
-    </p>
-  </div>
-  <!-- <a href="/upvote/{{post.post_id}}">UP</a> -->
-
-
-
-  <div class='.col-md-8' id="plantMoreInfo">
-			<h3><b>Platform</b></h3>
+<div class='.col-md-8' id="plantMoreInfo">
+		  <h3><b>Platform</b></h3>
 			<p> {{post.platform}} </p>
       <h3 class="subtitle">Tags in this post:</h3>
       {% for tag in tag_list %}

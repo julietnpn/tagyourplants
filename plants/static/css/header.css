@@ -1,0 +1,11 @@
+header.masthead {
+    background-color: darkseagreen;
+    text-align: center;
+}
+
+
+header h1, header h2, header h3 a, header a, header a:hover {
+    color: rgba(0,0,0,.5);
+    font-weight: 800;
+    text-decoration: none;
+}

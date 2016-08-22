@@ -1,3 +1,14 @@
+.vote-container form,
+.vote-container form div {
+    display: inline;
+}
+
+.vote-container button {
+    display: inline;
+    vertical-align: middle;
+}
+
+
 #carouselButtons {
     margin-left: 100px;
     position: absolute;

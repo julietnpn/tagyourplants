@@ -188,12 +188,9 @@ def get_singlepost_by_post_id(request):
         "singlePost": singlePost,
         "tag_list": tag_list,
                 }
-
     return TemplateResponse(request, 'plants/singlePost.html', context)
 
-
 def upVotes(request,post_id):
-
     singlePost = PlantPost.objects.filter(Q(post_id__exact=post_id))
 
     tag_list = set()
@@ -206,13 +203,11 @@ def upVotes(request,post_id):
         "tag_list": tag_list,
                 }
 
-
     post = PlantPost.objects.get(pk=post_id)
     post.score += 1
     post.save()
 
     messages.success(request, 'Thanks for your feedback! ')
-
     return TemplateResponse(request, 'plants/voteCompleteNote.html', context)
 
 def downVotes(request,post_id):
@@ -228,17 +223,10 @@ def downVotes(request,post_id):
         "singlePost": singlePost,
         "tag_list": tag_list,
                 }
-    #
-    # if('vote' in request.GET):
-    #     query = request.GET['vote']
-    #     if(query == 'YES'):
-    #         PlantPost.objects.filter(post_id__in=query).update(score=F('score') + 1)
-
 
     post = PlantPost.objects.get(pk=post_id)
     post.score -= 1
     post.save()
 
     messages.success(request, 'Thanks for your feedback! ')
-
     return TemplateResponse(request, 'plants/voteCompleteNote.html', context)

@@ -9,21 +9,28 @@
 {% for post in singlePost %}
 <h2 id="plantTitle" style="margin-left: -8%;"> {{post.plant.common_name}} | <i>{{post.plant.scientific_name}} </i></h2>
   <div class='col-md-4' id='plantPic'>
-    <img href= {{post.photo_url}} src= {{post.photo_url}} style="max-height: 500px; max-width: 500px;margin-top:15%;margin-left: -30%;">
+    <a href={{post.photo_url}}>
+      <img src={{post.photo_url}} style="max-height: 500px; max-width: 500px;margin-top:15%;margin-left: -30%;">
+    </a>
   </div>
 
   <div class='col-sm-4' id='votingBtn'>
-    <p> Found this post helpful?
-    <form class="search" action="/upvote/{{post.post_id}}" method="GET" id="votebtn">
-      <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up" data-loading-text=" ... "> {{post.score}}</button>
-    </form>
-
-    <form class="search" action="/downvote/{{post.post_id}}" method="GET" id="votebtn">
-      <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... "> {{post.score}}</button>
-    </form>
+    <p> Is this post helpful?</p>
+    <div class="vote-container">
+        <form action="/upvote/{{post.post_id}}" method="GET" id="votebtn">
+          <div>
+            <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up" data-loading-text=" ... "> </button>
+          </div>
+        </form>
+        {{post.score}}
+        <form action="/downvote/{{post.post_id}}" method="GET" id="votebtn">
+          <div>
+            <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... "> </button>
+          </div>
+        </form>
+    </div>
   </div>
   <!-- <a href="/upvote/{{post.post_id}}">UP</a> -->
-    </p>
 
   <div class='.col-md-8' id="plantMoreInfo">
 			<h3><b>Platform</b></h3>
