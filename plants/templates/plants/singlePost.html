@@ -15,31 +15,29 @@
   </div>
 
   <div class='col-sm-4' id='votingBtn'>
-    <p> Is this post helpful?</p>
+    <p> Is this post helpful?
     <div class="vote-container">
         <form action="/upvote/{{post.post_id}}" method="GET" id="votebtn">
           <div>
             <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-up" data-loading-text=" ... "> </button>
           </div>
         </form>
-        {{post.score}}
         <form action="/downvote/{{post.post_id}}" method="GET" id="votebtn">
           <div>
             <button type="submit" id="testBtn" class="btn btn-success glyphicon glyphicon-thumbs-down" data-loading-text=" ... "> </button>
           </div>
         </form>
     </div>
+    </p>
   </div>
   <!-- <a href="/upvote/{{post.post_id}}">UP</a> -->
 
   <div class='.col-md-8' id="plantMoreInfo">
 			<h3><b>Platform</b></h3>
 			<p> {{post.platform}} </p>
-      <h3 class="subtitle">Tags in this post:</h3>
+      <h3 class="subtitle"><b>Tags in this post:</b></h3>
       {% for tag in tag_list %}
         {% if tag != "" %}
-          <!-- <button type="button" class="btn btn-md"> -->
-            <!-- <span class = "label label-info"> {{tag}}</span> -->
             <a class="glyphicon glyphicon-tag" href="/plants/tagResult/?tag={{tag}}">{{tag}}</a>
         {% endif %}
       {% endfor %}

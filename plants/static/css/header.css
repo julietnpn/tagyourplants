@@ -9,3 +9,8 @@ header h1, header h2, header h3 a, header a, header a:hover {
     font-weight: 800;
     text-decoration: none;
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #e7e7e7;
+    background-color: beige;
+}
