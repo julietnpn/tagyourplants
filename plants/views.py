@@ -10,21 +10,21 @@ from .forms import SearchForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
-# def homepage(request):
-#     ordered_grid = PlantPost.objects.order_by('-score', '-post_date')[:30]
-#     first = ordered_grid[3]
-#     second = ordered_grid[5]
-#     third = ordered_grid[8]
-#     fourth = ordered_grid[11]
-#     context = {
-#         'ordered_grid': ordered_grid,
-#         'first': first,
-#         'second': second,
-#         'third': third,
-#         'fourth': fourth,
-#     }
-#
-#     return TemplateResponse(request, 'plants/index.html', context)
+def homepage(request):
+    ordered_grid = PlantPost.objects.order_by('-score', '-post_date')[:30]
+    # first = ordered_grid[3]
+    # second = ordered_grid[5]
+    # third = ordered_grid[8]
+    # fourth = ordered_grid[11]
+    context = {
+        'ordered_grid': ordered_grid,
+        # 'first': first,
+        # 'second': second,
+        # 'third': third,
+        # 'fourth': fourth,
+    }
+
+    return TemplateResponse(request, 'plants/index.html', context)
 
 def search_form(request):
     return render(request, 'plantResults.html')
