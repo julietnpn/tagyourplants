@@ -115,6 +115,7 @@ DATABASES = {
         'PASSWORD': '12345',
         'HOST': 'localhost',
         'PORT': '5432',
+        'TIME_ZONE'=None,
     }
 }
 
