@@ -32,9 +32,6 @@ ALLOWED_HOSTS = ['tagyourplants.herokuapp.com']
 import dj_database_url
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES = {
-    'default': dj_database_url.config()
-}
 
 # DATABASES['default'].update(db_from_env)
 
@@ -49,6 +46,7 @@ STATIC_URL = '/static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
+    '/plants/static/',
 )
 
 # Simplified static file serving.
