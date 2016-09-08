@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['tagyourplants.herokuapp.com']
 import dj_database_url
 
 db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'] = dj_database_url.config()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -140,6 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
+DATABASES = { 'default': dj_database_url.config() }
 
 LANGUAGE_CODE = 'en-us'
 
