@@ -5,8 +5,9 @@
 
 {% block content %}
 
-<h1 class="bd-title" id="content">All the Posts With Tag <b>"{{query}}"</b> </h1>
-
+<h1 class="bd-title" id="content">All the Posts With Tag <b>"{{query}}"</b> : </h1>
+	<br>
+	<h2 style="margin-left:10%;"> Total Posts: {{count}} </h2>
 <div class="thumbnailrow">
 		{% for r in postResult %}
 		<div class="col-md-6 col-md-3">

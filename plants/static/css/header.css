@@ -14,3 +14,9 @@ header h1, header h2, header h3 a, header a, header a:hover {
     border-color: #e7e7e7;
     background-color: beige;
 }
+
+@media (min-width: 992px)
+
+.col-md-3 {
+  width: 70%;
+}

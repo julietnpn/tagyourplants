@@ -63,7 +63,19 @@ body{
 .list-group-submenu {
   margin-left:20px;
 }
-.strong { font-weight: bold; }
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fffaf0;
+    border: 1px solid #5cb85c;
+}
+
+.strong {
+  font-weight: bold;
+}
 
 
 /*layout for thumbnails */

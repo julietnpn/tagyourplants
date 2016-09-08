@@ -42,24 +42,23 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span>Home</a></li>
-      <li ><a href="/nativePlant"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span>Native Plant Gallery</a></li>
-      <li ><a href="/tagResult/?tag=californianativeplants"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span>Tags</a></li>
-    </ul>
-
-  <div class="col-sm-3 col-md-3">
-    <form class="navbar-form" role="search">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search" name="tag">
-          <div class="input-group-btn">
-            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-          </div>
-      </div>
-    </form>
-  </div>
+      <li><a href="/"> Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+      <li><a href="/nativePlant">Native Plant Gallery<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
+      <li><a href="/tagResult/?tag=californianativeplants">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+  </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li ><a href="#"><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-qrcode"></span>About Us</a></li>
+      <div class="col-sm-4 col-md-8">
+        <form class="navbar-form" role="search">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="q">
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+          </div>
+        </form>
+      </div>
+      <li ><a href="#">About Us<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-qrcode"></span></a></li>
     </ul>
   </div>
 </nav>
@@ -112,9 +111,9 @@
 
                       <a href="#lifeform" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Life form<i class="fa fa-caret-down"></i></a>
                       <div class="collapse" id="lifeform">
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="tree"> Tree </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="grass"> Grass </label></a>
-                        <a href="#colorFlower" class="list-group-item strong glyphicon glyphicon-plus strong" data-toggle="collapse" data-parent="#colorFlower">Flowers<i class="fa fa-caret-down"></i></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="tree"> Tree <span class="badge">59</span></label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="grass"> Grass <span class="badge">81</span></label></a>
+                        <a href="#colorFlower" class="list-group-item strong glyphicon glyphicon-plus strong" data-toggle="collapse" data-parent="#colorFlower">Flowers  <span class="badge">206</span><i class="fa fa-caret-down"></i></a>
                           <div class="collapse list-group-submenu" id="colorFlower">
                             <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="wildflower"> Flower </label></a>
                             <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="wildflower"> Wild Flower </label></a>
@@ -127,12 +126,12 @@
                             <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="blueflower"> Blue Flower </label></a>
                           </div>
                           <!-- Have one more level for wildflower, different color's flower -->
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="flora"> Flora </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="herb"> Herb </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="weed"> Weed </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="leaf"> Leaf </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="seed"> Seed </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="botany"> Botany </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="flora"> Flora <span class="badge">72</span> </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="herb"> Herb <span class="badge">27</span></label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="weed"> Weed <span class="badge">25</span> </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="leaf"> Leaf <span class="badge">23</span></label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="seed"> Seed <span class="badge">5</span></label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="botany"> Botany <span class="badge">22</span></label></a>
                       </div>
 
                       <a href="#season" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Season<i class="fa fa-caret-down"></i></a>
@@ -140,6 +139,14 @@
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="spring"> Spring </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="summer"> Summer </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="fall"> Fall </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="winter"> Winter </label></a>
+                      </div>
+
+                      <a href="#needs" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Needs<i class="fa fa-caret-down"></i></a>
+                      <div class="collapse" id="needs">
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="sun"> Sun </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="water"> Water </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="nutrition"> Nutrition </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="winter"> Winter </label></a>
                       </div>
 
@@ -160,17 +167,12 @@
 
                       <a href="#location" class="list-group-item list-group-item-success strong" data-toggle="collapse" data-parent="#MainMenu">Location <i class="fa fa-caret-down"></i></a>
                       <div class="collapse" id="location">
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="usa"> USA </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="australia"> Australia <label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="california"> California </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="montana"> Montana </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="wisconsin"> Wisconsin </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="florida"> Florida </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="minnesota"> Minnesota </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="arizona"> Arizona </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="utah"> Utah </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="washington"> Washington </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="newmexico"> New Mexico </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="santacruzisland"> Santa Cruz Island </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="reversidecountyca"> Riverside County </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="santabarbaracountyca"> Santa Barbara County </label></a>
+                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="sancramento"> San cramento </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hawaii"> Hawaii </label></a>
                       </div>
 
@@ -196,7 +198,7 @@
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="gardening"> Gardening </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="landscaping"> Landscaping </label></a>
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hiking"> Hiking </label></a>
-                        <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hike"> Hike </label></a>
+                        <!-- <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="hike"> Hike </label></a> -->
                         <a class="list-group-item"><label name="choice"><input type="checkbox" name="tag" value="farming"> Farming </label></a>
                       </div>
 
