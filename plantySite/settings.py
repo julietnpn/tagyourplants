@@ -105,18 +105,21 @@ WSGI_APPLICATION = 'plantySite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'PlantyPicDB',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'TIME_ZONE': None,
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'PlantyPicDB',
+#         'USER': 'postgres',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#         'TIME_ZONE': None,
+#     }
+# }
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
+DATABASES = { 'default': dj_database_url.config() }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -137,9 +140,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-DATABASES = { 'default': dj_database_url.config() }
 
 LANGUAGE_CODE = 'en-us'
 
