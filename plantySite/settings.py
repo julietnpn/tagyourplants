@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['tagyourplants.herokuapp.com']
 #deploye to Heroku
 
 import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 
@@ -101,6 +102,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'plantySite.wsgi.application'
 
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
+DATABASES = { 'default': dj_database_url.config() }
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -137,9 +141,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-DATABASES = { 'default': dj_database_url.config() }
 
 LANGUAGE_CODE = 'en-us'
 
