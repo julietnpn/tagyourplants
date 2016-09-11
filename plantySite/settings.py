@@ -11,6 +11,77 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import dj_database_url
+
+
+# Make settings.py as environment agnostic as possible, setting and using environmental bariables liberally
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_variable(var_name):
+    """ Get the environment variable or return exception """
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        error_msg = "Set the %s environment variable" % var_name
+        raise ImproperlyConfigured(error_msg)
+
+DEBUG = get_env_variable("DJANGO_DEBUG")
+if DEBUG == 1 or DEBUG == '1':
+    DEBUG = True
+else:
+    DEBUG = False
+
+LOCAL_DEV = get_env_variable("DJANGO_LOCAL_DEV")
+if LOCAL_DEV == 1 or LOCAL_DEV == '1':
+    LOCAL_DEV = True
+else:
+    LOCAL_DEV = False
+
+if DEBUG:
+    DEBUG_TOOLBAR_PANELS = ( ...settings...   )
+    #...other DEBUG settings ....
+
+DATABASES = {}
+
+# Database
+# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'PlantyPicDB',
+#         'USER': 'postgres',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#         'TIME_ZONE': None,
+#     }
+# }
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
+# DATABASES = { 'default': dj_database_url.config() }
+
+if LOCAL_DEV:
+    ALLOWED_HOSTS = ['*'] #useful when testing with DEBUG = FALSE
+    INTERNAL_IPS = ('127.0.0.1',) #sets local IPS needed for DEBUG_TOOLBAR and other items.
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'PlantyPicDB',
+            'USER': 'postgres',
+            'PASSWORD': '12345',
+            'HOST': 'localhost',
+            'PORT': '5432',
+            'TIME_ZONE': None,
+    }
+else:
+    # Parse database configuration from $DATABASE_URL
+    DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,7 +100,6 @@ ALLOWED_HOSTS = ['tagyourplants.herokuapp.com']
 
 #deploye to Heroku
 
-import dj_database_url
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 db_from_env = dj_database_url.config(conn_max_age=500)
@@ -55,7 +125,6 @@ STATIC_URL = '/static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
-    '/plants/static/',
 )
 
 # Simplified static file serving.
@@ -109,25 +178,6 @@ TEMPLATES = [
         },
     },
 ]
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'PlantyPicDB',
-#         'USER': 'postgres',
-#         'PASSWORD': '12345',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#         'TIME_ZONE': None,
-#     }
-# }
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-DATABASES = { 'default': dj_database_url.config() }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
