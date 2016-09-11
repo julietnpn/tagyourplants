@@ -39,8 +39,6 @@ WSGI_APPLICATION = 'plantySite.wsgi.application'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
