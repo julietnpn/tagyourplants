@@ -30,9 +30,21 @@ ALLOWED_HOSTS = ['tagyourplants.herokuapp.com']
 #deploye to Heroku
 
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 db_from_env = dj_database_url.config(conn_max_age=500)
+
+
+WSGI_APPLICATION = 'plantySite.wsgi.application'
+
+# Internationalization
+# https://docs.djangoproject.com/en/1.9/topics/i18n/
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+# Update database configuration with $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -99,12 +111,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'plantySite.wsgi.application'
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-DATABASES = { 'default': dj_database_url.config() }
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
