@@ -79,19 +79,25 @@ DATABASES['default'].update(db_from_env)
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'plantySite/staticfiles')
-STATIC_URL = '/static/'
-
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# STATIC_URL = '/static/'
+STATIC_URL = 'https://sage-files.s3.amazonaws.com/static/'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'plants/static'),
-)
+    'plants/static',)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_ACCESS_KEY_ID = 'AKIAJUANEWHOUOJXC2LQ'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'sage-files'
+AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 # Application definition
 
 INSTALLED_APPS = [
@@ -103,6 +109,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    'storages',
+
 ]
 
 MIDDLEWARE_CLASSES = [
