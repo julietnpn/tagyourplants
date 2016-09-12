@@ -29,10 +29,9 @@ urlpatterns = [
     url(r'^downvote/(?P<post_id>\w+)/$', 'plants.views.downVotes', name='vote'),
 ]
 
+urlpatterns += patterns('',
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-if not settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-    )
