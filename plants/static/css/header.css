@@ -3,6 +3,10 @@ header.masthead {
     text-align: center;
 }
 
+div#bs-example-navbar-collapse-1 {
+    font-size: 14px;
+}
+
 
 header h1, header h2, header h3 a, header a, header a:hover {
     color: rgba(0,0,0,.5);
