@@ -66,13 +66,8 @@ DATABASES = { 'default': dj_database_url.config() }
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 db_from_env = dj_database_url.config(conn_max_age=500)
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-
-# Update database configuration with $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# # Update database configuration with $DATABASE_URL.
+ DATABASES['default'].update(db_from_env)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
@@ -94,8 +89,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
-AWS_ACCESS_KEY_ID = 'AKIAJUANEWHOUOJXC2LQ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAJX4FHGARWAP4UJXQ'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'sage-files'
 AWS_PRELOAD_METADATA = True # necessary to fix manage.py collectstatic command to only upload changed files instead of all files
 # Application definition
@@ -147,26 +142,6 @@ TEMPLATES = [
     },
 ]
 
-
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'PlantyPicDB',
-#         'USER': 'postgres',
-#         'PASSWORD': '12345',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#         'TIME_ZONE': None,
-#     }
-# }
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.9/topics/i18n/
-DATABASES = { 'default': dj_database_url.config() }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
